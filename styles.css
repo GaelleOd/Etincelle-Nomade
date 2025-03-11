@@ -8,31 +8,57 @@ body {
     color: #333; /* Couleur du texte */
 }
 
-/* En-tête */
+/* En-tête fixe */
 header {
-    background: transparent; /* Fond transparent */
-    color: #333; /* Couleur du texte */
-    padding: 20px;
-    border-bottom: 1px solid #ddd; /* Bordure légère en bas */
+    position: fixed; /* Fixe l'en-tête en haut de la page */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white; /* Fond blanc */
+    padding: 10px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    z-index: 1000; /* Assure que l'en-tête est au-dessus du contenu */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Logo */
+.logo img {
+    height: 50px; /* Ajuste la taille du logo */
+    width: auto;
+}
+
+/* Titre du site */
+.site-title h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
 }
 
 /* Navigation */
 nav ul {
     list-style: none;
     padding: 0;
-    background: transparent; /* Fond transparent */
-    padding: 10px;
+    margin: 0;
+    display: flex;
+    align-items: center;
 }
 
 nav ul li {
-    display: inline;
     margin: 0 15px;
 }
 
 nav ul li a {
-    color: #333; /* Couleur du texte */
+    color: #333;
     text-decoration: none;
     font-weight: bold;
+    font-size: 16px;
 }
 
 nav ul li a:hover {
@@ -40,18 +66,17 @@ nav ul li a:hover {
 }
 
 .active {
-    font-weight: bold;
     color: #ff6347; /* Couleur pour la page active */
 }
 
 /* Contenu principal */
 main {
     padding: 20px;
-    background: white; /* Fond blanc pour le contenu */
-    margin: 20px auto;
+    background: white;
+    margin: 100px auto 20px; /* Ajoute une marge en haut */
     max-width: 800px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Cartes (pour la page d'accueil) */
@@ -69,14 +94,15 @@ main {
     width: 30%;
     margin: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
+    transform: scale(1.05); /* Effet de zoom au survol */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
 }
 
-/* Services (pour la page services.html) */
+/* Services (pour la page ateliers.html) */
 .service {
     background: #f9f9f9;
     padding: 15px;
@@ -90,10 +116,15 @@ form {
     flex-direction: column;
     max-width: 400px;
     margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 label {
     margin-top: 10px;
+    font-weight: bold;
 }
 
 input, textarea, button {
@@ -101,12 +132,19 @@ input, textarea, button {
     margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical; /* Permet de redimensionner verticalement */
 }
 
 button {
     background: #333;
     color: white;
     cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
 }
 
 button:hover {
@@ -136,12 +174,26 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .card {
-        width: 100%; /* Les cartes prennent toute la largeur sur mobile */
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo, .site-title, nav {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
     }
 
     nav ul li {
-        display: block;
         margin: 10px 0;
+    }
+
+    .card {
+        width: 100%; /* Les cartes prennent toute la largeur sur mobile */
     }
 }
