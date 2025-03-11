@@ -1,19 +1,27 @@
+/* Styles généraux */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
+    background: #f9f9f9; /* Fond de page léger */
+    color: #333; /* Couleur du texte */
 }
 
+/* En-tête */
 header {
-    background: #333;
-    color: white;
+    background: transparent; /* Fond transparent */
+    color: #333; /* Couleur du texte */
     padding: 20px;
+    border-bottom: 1px solid #ddd; /* Bordure légère en bas */
 }
 
+/* Navigation */
 nav ul {
     list-style: none;
     padding: 0;
+    background: transparent; /* Fond transparent */
+    padding: 10px;
 }
 
 nav ul li {
@@ -22,23 +30,31 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;
+    color: #333; /* Couleur du texte */
     text-decoration: none;
+    font-weight: bold;
 }
 
 nav ul li a:hover {
-    color: #ff6347;
+    color: #ff6347; /* Couleur au survol */
 }
 
 .active {
     font-weight: bold;
-    color: #ff6347;
+    color: #ff6347; /* Couleur pour la page active */
 }
 
+/* Contenu principal */
 main {
     padding: 20px;
+    background: white; /* Fond blanc pour le contenu */
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
+/* Cartes (pour la page d'accueil) */
 .card-container {
     display: flex;
     justify-content: space-around;
@@ -60,6 +76,7 @@ main {
     transition: transform 0.3s ease;
 }
 
+/* Services (pour la page services.html) */
 .service {
     background: #f9f9f9;
     padding: 15px;
@@ -67,6 +84,7 @@ main {
     border-left: 5px solid #ff6347;
 }
 
+/* Formulaire de contact */
 form {
     display: flex;
     flex-direction: column;
@@ -95,28 +113,31 @@ button:hover {
     background: #ff6347;
 }
 
+/* Pied de page */
 footer {
-    background: #333;
-    color: white;
+    background: transparent; /* Fond transparent */
+    color: #333; /* Couleur du texte */
     padding: 10px;
     position: relative;
     width: 100%;
     margin-top: 20px;
+    border-top: 1px solid #ddd; /* Bordure légère en haut */
 }
 
 .social-links a {
-    color: white;
+    color: #333; /* Couleur du texte */
     margin: 0 10px;
     text-decoration: none;
 }
 
 .social-links a:hover {
-    color: #ff6347;
+    color: #ff6347; /* Couleur au survol */
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .card {
-        width: 100%;
+        width: 100%; /* Les cartes prennent toute la largeur sur mobile */
     }
 
     nav ul li {
