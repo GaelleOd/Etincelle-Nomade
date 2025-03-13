@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montessori - Étincelle Nomade</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        h1 {
+            font-size: 36px;
+            color: #DF9418;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+        }
+        h2 {
+            font-size: 18px;
+            color: #5C5C5C;
+        }
+        .marquee-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #883e2a;
+            color: #f9f2eb;
+            border-top: 2px solid #4a2c1f;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+        .marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 30s linear infinite;
+            font-size: 24px;
+        }
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        main {
+            padding: 20px;
+            background: white;
+            margin: 100px auto 20px;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Bande en haut -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo Étincelle Nomade">
+            </div>
+            <div class="site-title">
+                <h1>Étincelle Nomade</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="Planning.html">Planning</a></li>
+                    <li><a href="qui-suis-je.html">Qui suis-je ?</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main>
+        <section class="content-section">
+            <h2>Atelier Montessori</h2>
+            <p>Bienvenue dans notre atelier Montessori !</p>
+            <p>Faites découvrir à vos enfants les principes de la pédagogie Montessori à travers des activités ludiques et enrichissantes.</p>
+            <p>Un environnement stimulant, adapté à leur rythme et à leurs besoins d'apprentissage.</p>
+        </section>
+    </main>
+
+    <!-- Bande déroulante en bas -->
+    <div class="marquee-container">
+        <div class="marquee" id="marquee-text">
+            <!-- Le texte sera chargé ici par JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour charger le texte depuis un fichier externe
+        function loadMarqueeText() {
+            fetch('marquee-text.txt') // Chemin vers ton fichier texte
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Fichier non trouvé');
+                    }
+                    return response.text();
+                })
+                .then(text => {
+                    // Insère le texte dans l'élément avec l'ID "marquee-text"
+                    document.getElementById('marquee-text').textContent = text;
+                })
+                .catch(error => {
+                    console.error('Erreur lors du chargement du texte :', error);
+                    document.getElementById('marquee-text').textContent = "Erreur de chargement du texte.";
+                });
+        }
+
+        // Appelle la fonction au chargement de la page
+        window.onload = loadMarqueeText;
+    </script>
+</body>
+</html>
