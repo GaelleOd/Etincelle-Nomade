@@ -63,11 +63,11 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ff6347;
+    color: #D66831;
 }
 
 .active {
-    color: #ff6347;
+    color: #D66831;
 }
 
 /* Contenu principal */
