@@ -27,7 +27,7 @@
             border-top: 2px solid #4a2c1f;
             overflow: hidden;
             white-space: nowrap;
-            padding: 5px 0;
+            padding: 10px 0;
             text-align: center;
             z-index: 1000;
         }
@@ -35,11 +35,107 @@
             display: inline-block;
             white-space: nowrap;
             animation: marquee 30s linear infinite;
+            font-size: 24px;
         }
         @keyframes marquee {
             from { transform: translateX(100%); }
             to { transform: translateX(-100%); }
         }
+
+        /* Espacement général des sections */
+        main {
+            width: 90%;  /* Ajoute une largeur maximale */
+            max-width: 1200px;  /* Largeur maximale du contenu principal */
+            margin: 0 auto;  /* Centre le contenu */
+            padding: 40px 20px;  /* Espacement autour du contenu */
+            box-sizing: border-box;
+        }
+
+        main section {
+            margin-bottom: 40px;  /* Augmentation de la marge entre les sections */
+        }
+
+        /* Espacement entre l'en-tête et le titre Bienvenue */
+        .main-content {
+            margin-top: 120px; /* Ajoute un espacement entre l'en-tête fixe et le contenu principal */
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px; /* Espacement entre les vignettes */
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            box-sizing: border-box;
+            position: relative; /* Position relative pour que le lien occupe toute la carte */
+            display: flex; /* Utilisation de Flexbox pour centrer le contenu */
+            justify-content: center; /* Centre horizontalement */
+            align-items: center; /* Centre verticalement */
+            overflow: hidden; /* Pour cacher toute partie qui dépasse */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Ajouter un effet de survol sur les vignettes */
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Lien qui recouvre toute la carte */
+        .card a {
+            text-decoration: none;
+            color: #f9f2eb; /* Texte clair */
+            position: absolute; /* Le lien couvre toute la carte */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1; /* Pour s'assurer que le texte est par-dessus l'image */
+        }
+
+        /* Par défaut, ajouter un fond semi-transparent autour du texte */
+        .card a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent gris/noir */
+            border-radius: 4px;
+            z-index: -1; /* Pour que le fond soit derrière le texte */
+            padding: 5px 10px; /* Juste ce qu'il faut pour entourer le texte */
+        }
+
+        /* Lors du survol de la carte, enlever le fond semi-transparent */
+        .card:hover a::before {
+            background-color: transparent; /* Supprime le fond lors du survol */
+        }
+
+        /* Lors du survol de la carte, assombrir l'image de fond */
+        .card:hover {
+            background-color: rgba(0, 0, 0, 0.3); /* Assombrissement de la carte */
+        }
+
+        /* Garde le texte visible même pendant le survol */
+        .card:hover a {
+            color: #f9f2eb; /* Assurer que le texte reste clair */
+        }
+
+        .card h3, .card p {
+            z-index: 2; /* S'assurer que le texte reste par-dessus */
+        }
+        
     </style>
 </head>
 <body>
@@ -61,7 +157,7 @@
             </nav>
         </div>
     </header>
-    <main>
+    <main class="main-content">
         <section>
             <p class="Textbody"><span style="font-size: 35pt; color: #AC4C2D;">Bienvenue !</span></p>
             <p class="Textbody">Des Ateliers <strong>Yoga</strong>, <strong>Art</strong> et <strong>Montessori</strong> :</p>
@@ -72,17 +168,28 @@
         <section>
             <h3>Ateliers:</h3>
             <div class="card-container">
+                <!-- Lien vers la page Yoga -->
                 <div class="card yoga">
-                    <h3>Yoga</h3>
-                    <p>Description de l'activité.</p>
+                    <a href="yoga.html">
+                        <h3>Yoga</h3>
+                        <p>Description de l'activité.</p>
+                    </a>
                 </div>
+
+                <!-- Lien vers la page Art -->
                 <div class="card art">
-                    <h3>Art</h3>
-                    <p>Description de l'activité.</p>
+                    <a href="art.html">
+                        <h3>Art</h3>
+                        <p>Description de l'activité.</p>
+                    </a>
                 </div>
+
+                <!-- Lien vers la page Montessori -->
                 <div class="card montessori">
-                    <h3>Montessori</h3>
-                    <p>Description de l'activité.</p>
+                    <a href="montessori.html">
+                        <h3>Montessori</h3>
+                        <p>Description de l'activité.</p>
+                    </a>
                 </div>
             </div>
         </section>
@@ -94,6 +201,7 @@
             <a href="https://www.instagram.com/etincellenomadeyoga/" target="_blank">Instagram</a>
         </div>
     </footer>
+    
     <div class="marquee-container">
         <div class="marquee" id="marquee-text">
             <!-- Le texte sera chargé ici par JavaScript -->
