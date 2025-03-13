@@ -74,12 +74,8 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             width: 30%;
             box-sizing: border-box;
-            position: relative; /* Position relative pour que le lien occupe toute la carte */
-            display: flex; /* Utilisation de Flexbox pour centrer le contenu */
-            justify-content: center; /* Centre horizontalement */
-            align-items: center; /* Centre verticalement */
-            overflow: hidden; /* Pour cacher toute partie qui dépasse */
             transition: transform 0.3s ease-in-out;
+            position: relative; /* Position relative pour les liens absolus */
         }
 
         /* Ajouter un effet de survol sur les vignettes */
@@ -87,20 +83,12 @@
             transform: translateY(-10px);
         }
 
-        /* Lien qui recouvre toute la carte */
+        /* Style des liens */
         .card a {
             text-decoration: none;
-            color: #f9f2eb; /* Texte clair */
-            position: absolute; /* Le lien couvre toute la carte */
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 1; /* Pour s'assurer que le texte est par-dessus l'image */
+            color: #f9f2eb; /* Couleur du texte */
+            font-weight: bold;
+            position: relative;
         }
 
         /* Par défaut, ajouter un fond semi-transparent autour du texte */
@@ -117,23 +105,17 @@
             padding: 5px 10px; /* Juste ce qu'il faut pour entourer le texte */
         }
 
-        /* Lors du survol de la carte, enlever le fond semi-transparent */
+        /* Lors du survol de la carte, enlever le fond semi-transparent et assombrir l'image */
         .card:hover a::before {
             background-color: transparent; /* Supprime le fond lors du survol */
         }
 
-        /* Lors du survol de la carte, assombrir l'image de fond */
         .card:hover {
             background-color: rgba(0, 0, 0, 0.3); /* Assombrissement de la carte */
         }
 
-        /* Garde le texte visible même pendant le survol */
         .card:hover a {
-            color: #f9f2eb; /* Assurer que le texte reste clair */
-        }
-
-        .card h3, .card p {
-            z-index: 2; /* S'assurer que le texte reste par-dessus */
+            color: #f9f2eb; /* Garde la couleur du texte claire */
         }
         
     </style>
