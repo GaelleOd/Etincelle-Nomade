@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
@@ -95,9 +95,33 @@
         </div>
     </footer>
     <div class="marquee-container">
-        <div class="marquee">
-            Site en construction, la patience est une vertu à cultiver. C'est une grande et rare vertu que la patience, que de savoir attendre et mûrir, que se corriger, se reprendre et tendre à la perfection.
+        <div class="marquee" id="marquee-text">
+            <!-- Le texte sera chargé ici par JavaScript -->
         </div>
     </div>
+
+    <script>
+        // Fonction pour charger le texte depuis un fichier externe
+        function loadMarqueeText() {
+            fetch('marquee-text.txt') // Chemin vers ton fichier texte
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Fichier non trouvé');
+                    }
+                    return response.text();
+                })
+                .then(text => {
+                    // Insère le texte dans l'élément avec l'ID "marquee-text"
+                    document.getElementById('marquee-text').textContent = text;
+                })
+                .catch(error => {
+                    console.error('Erreur lors du chargement du texte :', error);
+                    document.getElementById('marquee-text').textContent = "Erreur de chargement du texte.";
+                });
+        }
+
+        // Appelle la fonction au chargement de la page
+        window.onload = loadMarqueeText;
+    </script>
 </body>
 </html>
