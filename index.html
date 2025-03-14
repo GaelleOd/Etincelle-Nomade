@@ -117,6 +117,12 @@
         .card:hover a {
             color: #f9f2eb; /* Garde la couleur du texte claire */
         }
+
+	footer {
+            position: relative;
+            z-index: 999; /* Pour qu'il passe au-dessus de la bande */
+            margin-bottom: 50px; /* Même hauteur que la bande */
+	}
         
     </style>
 </head>
@@ -183,7 +189,6 @@
             <a href="https://www.instagram.com/etincellenomadeyoga/" target="_blank">Instagram</a>
         </div>
     </footer>
-    
     <div class="marquee-container">
         <div class="marquee" id="marquee-text">
             <!-- Le texte sera chargé ici par JavaScript -->
