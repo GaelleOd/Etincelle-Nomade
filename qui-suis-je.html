@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style type="text/css">
+    @import url("DMSans_Thin/stylesheet.css");
+
         /* Espacement général des sections */
         main {
             width: 90%;
@@ -23,19 +25,20 @@
 
         /* Titre centré en haut */
         .title {
-            text-align: center;
-            font-family: 'PlaywriteHU VariableFont wght';
-            font-size: 35pt;
-            color: #AC4C2D;
-            margin-bottom: 40px;
+    text-align: center;
+    font-family: "ClickerScript Regular";
+    font-size: 35pt;
+    color: #AC4C2D;
+    margin-bottom: 40px;
         }
 
         /* Conteneur pour l'image et le texte */
         .text-image-container {
-            display: flex;
-            flex-wrap: wrap; /* Permet le texte de descendre sous l'image quand nécessaire */
-            align-items: flex-start;
-            margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Permet le texte de descendre sous l'image quand nécessaire */
+    align-items: flex-start;
+    margin-bottom: 20px;
+    /* [disabled]font-family: "ClickerScript Regular"; */
         }
 
         /* Style pour l'image à gauche */
@@ -66,11 +69,12 @@
 
         /* Style pour le texte à droite de l'image */
         .text-image-container .text {
-            flex: 1; /* Prend toute la largeur restante */
-            font-family: Bodoni MT, serif;
-            font-size: 19pt;
-            color: #333;
-            min-width: 0; /* Permet au texte de se casser si l'espace est plein */
+    flex: 1; /* Prend toute la largeur restante */
+    font-family: "DMSans VariableFont opsz", wght;
+    font-size: 15pt;
+    color: #000000;
+    min-width: 0; /* Permet au texte de se casser si l'espace est plein */
+    /* [disabled]font-style: normal; */
         }
 
         .text-image-container .text p {
@@ -79,11 +83,11 @@
 
         /* Conteneur pour la partie texte en dessous */
         .text-below-image {
-            width: 100%; /* Largeur totale pour le texte en dessous */
-            font-family: Bodoni MT, serif;
-            font-size: 19pt;
-            color: #333;
-            margin-top: 20px;
+    width: 100%; /* Largeur totale pour le texte en dessous */
+    font-family: "DMSans VariableFont opsz", wght;
+    font-size: 15pt;
+    color: #000000;
+    margin-top: 20px;
         }
 
         /* Responsive : lorsque l'écran est petit, l'image passe au-dessus du texte */
@@ -127,33 +131,36 @@
     <main>
         <section>
             <!-- Titre centré -->
-            <p class="title">Qui est Étincelle Nomade ?</p>
+            <h1 class="title">Qui est Étincelle Nomade ?</h1>
+<div class="text-image-container">
+        <!-- Diaporama d'images -->
+        <div class="diaporama-images">
+            <img src="images/quisuisje/image1.jpg" alt="Image 1" class="active">
+            <img src="images/quisuisje/image2.jpg" alt="Image 2">
+            <img src="images/quisuisje/image3.jpg" alt="Image 3">
+        </div>
 
-            <div class="text-image-container">
-                <!-- Diaporama d'images -->
-                <div class="diaporama-images">
-                    <img src="images/quisuisje/image1.jpg" alt="Image 1" class="active">
-                    <img src="images/quisuisje/image2.jpg" alt="Image 2">
-                    <img src="images/quisuisje/image3.jpg" alt="Image 3">
-                </div>
-
-                <!-- Première partie du texte à droite de l'image -->
-                <div class="text">
-                    <p>Je m'appelle Gaëlle, j'ai 31 ans et je suis créatrice, Professeure de Yoga et intervenante en Art et Montessori. Créatrice des ateliers de "Etincelle Nomade", je suis ravie de vous accueillir. Je suis diplômée des beaux-arts de Marseille (DNSEP à L'ESADMM) depuis 2017. Passionnée par la création j'ai continué à expérimenter et à développer mon identité artistique, aujourd'hui je suis créatrice sous le nom de "Gaëlle & Amour".</p>
-                </div>
-            </div>
+        <!-- Première partie du texte à droite de l'image -->
+        <div class="text">
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>Je m'appelle Gaëlle, j'ai 31 ans et je suis créatrice, Professeure de Yoga et intervenante en Art et Montessori. Créatrice des ateliers de "Etincelle Nomade", je suis ravie de vous accueillir.&nbsp;</p>
+<p>Je suis diplômée des beaux-arts de Marseille (DNSEP à L'ESADMM) depuis 2017. Passionnée par la création j'ai continué à expérimenter et à développer mon identité artistique, aujourd'hui je suis créatrice sous le nom de "Gaëlle &amp; Amour".</p>
+        </div>
+      </div>
 
             <!-- Deuxième partie du texte en dessous de l'image -->
             <div class="text-below-image">
+                <p>&nbsp;</p>
                 <p>J'ai ensuite souhaité transmettre cette énergie créatrice aux enfants dans les écoles, centre sociaux, associations (interventions et transmissions artistiques depuis 2012) puis aux adolescents et adultes. Suite à ces moments de partage avec les enfants je me suis intéressée aux pédagogies alternatives. Je me suis formée en tant qu'éducatrice Montessori pour les 3 à 6 ans (École internationale Montessori d'Esclaibes) en 2018. Dans les écoles Montessori j'enseigne la pédagogie Montessori mais également le Yoga enfants et l'Art.</p>
-                <p>Le Yoga est à la base une pratique personnelle que j'ai commencé à l'âge de 20 ans, adoptée, dès les prémices, à mon quotidien. J'ai souhaité le transmettre un an plus tard aux enfants dans les écoles et associations. Une profession que je maîtrise depuis plus de dix ans. Je me suis formée en 2022 auprès de Pranidhana Yoga (Yoga Alliance) et donne des cours aujourd'hui à tous publics (adultes, enfants, enfant/parent).</p>
+<p>Le Yoga est à la base une pratique personnelle que j'ai commencé à l'âge de 20 ans, adoptée, dès les prémices, à mon quotidien. J'ai souhaité le transmettre un an plus tard aux enfants dans les écoles et associations. Une profession que je maîtrise depuis plus de dix ans. Je me suis formée en 2022 auprès de Pranidhana Yoga (Yoga Alliance) et donne des cours aujourd'hui à tous publics (adultes, enfants, enfant/parent).</p>
                 <p>Lors de mes interventions en Art et Yoga le public ressent : de la bienveillance, de l'écoute, une énergie positive et un bien-être partagé.</p>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 - Étincelle Nomade</p>
+<p>&copy; 2025 - Étincelle Nomade</p>
         <div class="social-links">
             <a href="https://www.facebook.com/EtincelleNomadeYoga?locale=fr_FR" target="_blank">Facebook</a>
             <a href="https://www.instagram.com/etincellenomadeyoga/" target="_blank">Instagram</a>
