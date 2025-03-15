@@ -1,12 +1,14 @@
 @import url("BethEllen_Regular/stylesheet.css");
+@import url("ClickerScript_Regular/stylesheet.css");
+
 /* Styles généraux */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "DMSans VariableFont opsz", wght;
     margin: 0;
     padding: 0;
     text-align: center;
     background: #f9f9f9;
-    color: #333;
+    color: #000000;
 }
 
 /* En-tête fixe */
@@ -61,7 +63,8 @@ nav ul li a {
     color: #333;
     text-decoration: none;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 30px;
+    font-family: "ClickerScript Regular";
 }
 
 nav ul li a:hover {
@@ -93,7 +96,7 @@ main {
     position: relative;
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 40x;
+    padding: 40px;
     width: 45%;
     margin: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -168,6 +171,34 @@ main {
     background: rgba(0, 0, 0, 0.5);
 }
 
+/* Bouton "En savoir plus" */
+.card .btn-en-savoir-plus {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #de4814 !important;
+    color:#f9f2eb !important;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease !important;
+    z-index: 2;
+}
+
+/* Affiche le bouton au survol de la carte */
+.card:hover .btn-en-savoir-plus {
+    display: block;
+}
+
+/* Effet au survol du bouton */
+.card .btn-en-savoir-plus:hover {
+    background-color: #b93e13 !important; /* Couleur plus foncée pour l'effet */
+}
+
 /* Services */
 .service {
     background: #f9f9f9;
@@ -191,6 +222,8 @@ form {
 label {
     margin-top: 10px;
     font-weight: bold;
+    font-size: large;
+    font-family: "DMSans VariableFont opsz", wght;
 }
 
 input, textarea, button {
@@ -198,7 +231,8 @@ input, textarea, button {
     margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 26px;
+    font-family: "ClickerScript Regular";
 }
 
 textarea {
@@ -216,6 +250,7 @@ button {
 
 button:hover {
     background: #ff6347;
+    /* [disabled]font-size: x-large; */
 }
 
 /* Pied de page */
@@ -227,6 +262,8 @@ footer {
     width: 100%;
     margin-top: 20px;
     border-top: 1px solid #ddd;
+    font-family: "DMSans VariableFont opsz", wght;
+    font-size: 18px;
 }
 
 .social-links a {
