@@ -7,55 +7,112 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        h1 {
-            font-size: 36px;
-            color: #DF9418;
+    @import url("DMSans_Thin/stylesheet.css");
+
+        /* Styles pour le menu à gauche */
+        .side-nav {
+    position: fixed;
+    top: 120px; /* Positionner le menu juste en dessous de l'en-tête */
+    left: 0;
+    width: 200px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    color: #883E2A;
+    font-family: "BethEllen Regular";
+    font-size: 15px;
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+        .side-nav a {
+    display: block;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #F9F2EB;
+    background-color: #C48C8C;
+    border-radius: 4px;
+    text-align: center;
+    font-family: "ClickerScript Regular";
+    font-size: 30px;
+    font-style: normal;
+    text-indent: 5px;
+    font-weight: bold;
         }
-        h2 {
-            font-size: 18px;
-            color: #5C5C5C;
-        }
-        .marquee-container {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #883e2a;
-            color: #f9f2eb;
-            border-top: 2px solid #4a2c1f;
-            overflow: hidden;
-            white-space: nowrap;
-            padding: 10px 0;
-            text-align: center;
-            z-index: 1000;
-        }
-        .marquee {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 30s linear infinite;
-            font-size: 24px;
-        }
-        @keyframes marquee {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
+        .side-nav a:hover {
+    background-color: #D66831;
         }
 
-       main {
-            width: 90%;  /* Ajoute une largeur maximale */
-            max-width: 1200px;  /* Largeur maximale du contenu principal */
-            margin: 0 auto;  /* Centre le contenu */
-            padding: 40px 20px;  /* Espacement autour du contenu */
-	    margin-top: 120px;
-            box-sizing: border-box;
+        /* Styles pour le contenu principal */
+        main {
+            margin-left: 220px; /* Laisser de la place pour le menu latéral */
+            padding: 40px;
+            max-width: 1200px;
+            margin: 40px auto; /* Centrer le main */
         }
 
-        main section {
-            margin-bottom: 40px;  /* Augmentation de la marge entre les sections */
+        /* Ajout d'un espacement de 120px entre l'en-tête et le premier yoga */
+        main > section:first-of-type {
+            margin-top: 120px; /* Ajoute un espacement de 120px avant le premier yoga */
         }
-        .content-section {
+
+        section {
             margin-bottom: 40px;
+        }
+
+        h2 {
+    color: #AC4C2D;
+    font-family: "ClickerScript Regular";
+    font-size: 40px;
+        }
+
+        .yoga-type {
+    margin-bottom: 30px;
+    /* [disabled]font-family: "DMSans Thin"; */
+        }
+
+        .yoga-details {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #000000;
+    font-family: "DMSans VariableFont opsz", wght;
+    font-size: 20px;
+        }
+
+        .yoga-details p {
+    margin: 10px 0;
+    color: #000000;
+    font-family: "DMSans VariableFont opsz", wght;
+    font-size: 21px;
+        }
+
+        .yoga-details .price {
+    font-weight: bold;
+    color: #000000;
+        }
+
+        /* Style pour le diaporama */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .slider-images {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .slider-images img {
+            width: 100%;
+            height: auto;
+        }
+
+        .slider-images img.hidden {
+            display: none;
         }
     </style>
 </head>
@@ -80,45 +137,190 @@
         </div>
     </header>
 
+    <!-- Menu latéral -->
+    <div class="side-nav">
+        <h3>Mes ateliers de Yoga:</h3>
+        <a href="#hatha-yoga">Hatha Yoga Adultes</a>
+        <a href="#yoga-ludique">Yoga Ludique Parent & Enfant</a>
+        <a href="#yoga-plein-air">Yoga en Plein Air</a>
+        <a href="#yoga-prenatal">Yoga Prénatal & Postnatal</a>
+        <a href="#yoga-parents-bebe">Yoga Parents & Bébé</a>
+        <a href="#atelier-connexion">Atelier «Connexion à soi»</a>
+    </div>
+
     <!-- Contenu principal -->
     <main>
-        <section class="content-section">
-            <h2>Atelier Yoga</h2>
-            <p>Bienvenue dans notre atelier Yoga !</p>
-            <p>Profitez d'une pratique de yoga pour améliorer votre flexibilité, renforcer votre corps, et apaiser votre esprit.</p>
-            <p>Les séances sont adaptées à tous les niveaux et sont guidées par Gaëlle dans un cadre calme et naturel.</p>
+        <!-- Hatha Yoga Adultes -->
+        <section id="hatha-yoga" class="yoga-type">
+            <h2><strong>Cours Hatha Yoga adultes</strong></h2>
+            <!-- Diaporama -->
+            <div class="slider-container">
+                <div class="slider-images" id="hatha-slider">
+                    <img src="images/hatha1.jpg" alt="Image Hatha Yoga 1">
+                    <img src="images/hatha2.jpg" alt="Image Hatha Yoga 2">
+                    <img src="images/hatha3.jpg" alt="Image Hatha Yoga 3">
+                </div>
+            </div>
+          <div class="yoga-details">
+              <p><strong>Hatha Yoga & Hatha Flow :</strong>
+</p>
+              Un pur moment de connexion à soi en pratiquant les asanas (postures), les pranayamas <strong>(</strong>respirations), les auto-massages, la relaxation &amp; la méditation lors des séances. Venez prendre soin de vous grâce à des exercices de pleine conscience pour favoriser la concentration, améliorer la souplesse et l'équilibre corporel, apaiser les émotions par la respiration et la relaxation, recentrer son énergie et surtout vivre un moment de détente et de bonheur.
+              </p>
+              <p><strong>Âge :</strong> Adultes (à partir de 18 ans)</p>
+                <p><strong>Durée :</strong> 1h15</p>
+                <p><strong>Nombre de places :</strong> 6 places par cours</p>
+                <p><strong>Créneaux horaires :</strong> CRENEAUX PROCHAINEMENT DISPONIBLE</p>
+                <p><strong class="price">Tarif :</strong>
+	</p>
+            <p>15 euros le cours la séance</p>
+                <p>&nbsp;
+	46 euros le mois pour 1 cours par semaine</p>
+                <div data_temp_dwid="0"> 56 euros le mois pour 2 cours par semaine </div>
+                <p>&nbsp; </p>
+            </p>
+            </div>
+        </section>
+
+        <!-- Yoga Ludique Parent & Enfant -->
+        <section id="yoga-ludique" class="yoga-type">
+            <h2>Yoga Ludique Parent & Enfant</h2>
+            <!-- Diaporama -->
+            <div class="slider-container">
+                <div class="slider-images" id="ludique-slider">
+                    <img src="images/yoga-ludique1.jpg" alt="Yoga Ludique Parent Enfant 1">
+                    <img src="images/yoga-ludique2.jpg" alt="Yoga Ludique Parent Enfant 2">
+                    <img src="images/yoga-ludique3.jpg" alt="Yoga Ludique Parent Enfant 3">
+                    <img src="images/yoga-ludique4.jpg" alt="Yoga Ludique Parent Enfant 4">
+                    <img src="images/yoga-ludique5.jpg" alt="Yoga Ludique Parent Enfant 5">
+                </div>
+            </div>
+            <div class="yoga-details">
+                <p><strong>Un cours d'éveil au Yoga pour les enfants et les parents sous forme de
+		contes, ludique et adapté: </strong>
+		</p> Je suis heureuse de vous proposer les Ateliers Yoga & bien-être enfants/ parents :</p>
+		<p>-Yoga sous forme de contes & chansons, postures à réaliser avec son enfant<p>
+		<p>-Massages & exercices de sophrologie ludiques à partager avec son enfant<p>
+		<p>Des exercices de pleine conscience pour favoriser la concentration, améliorer la souplesse et
+		l'équilibre corporel, apaiser les émotions par la respiration et la relaxation, recentrer son énergie
+		et surtout partager un moment de bonheur en famille.<p>
+		<p>Un instant de douceur et d'apaisement pour prendre soin de soi et de son enfant.</p>
+                <p><strong>Âge :</strong> De 2,5 à 8 ans pour les enfants et leurs parents</p>
+                <p><strong>Durée :</strong> 45min</p>
+                <p><strong>Nombre de places :</strong> 5 familles</p>
+                <p><strong>Créneaux horaires :</strong> CRENEAUX PROCHAINEMENT DISPONIBLE</p>
+                <p><strong class="price">Tarif :</strong> 15 euros la séance par famille
+		</p>46 euros le mois pour 1 cours par semaine</p>
+            </div>
+        </section>
+
+        <!-- Yoga en Plein Air -->
+        <section id="yoga-plein-air" class="yoga-type">
+            <h2>Yoga en Plein Air</h2>
+            <!-- Diaporama -->
+            <div class="slider-container">
+                <div class="slider-images" id="plein-air-slider">
+                    <img src="images/plein-air1.jpg" alt="Yoga en Plein Air 1">
+                    <img src="images/plein-air2.jpg" alt="Yoga en Plein Air 2">
+                    <img src="images/plein-air3.jpg" alt="Yoga en Plein Air 3">
+                </div>
+            </div>
+            <div class="yoga-details">
+                <p><strong>Description :</strong> Le Yoga en Plein Air permet de se connecter à la nature tout en pratiquant des postures de yoga en extérieur, pour une expérience revitalisante.</p>
+                <p><strong>Âge :</strong> Adultes et ados</p>
+                <p><strong>Durée :</strong> 1h30</p>
+                <p><strong>Nombre de places :</strong> 15 places disponibles</p>
+                <p><strong>Créneaux horaires :</strong> Samedi 9h - 10h30</p>
+                <p><strong class="price">Tarif :</strong> 18€ par séance</p>
+            </div>
+        </section>
+
+        <!-- Yoga Prénatal & Postnatal -->
+        <section id="yoga-prenatal" class="yoga-type">
+            <h2>Yoga Prénatal & Postnatal</h2>
+            <!-- Diaporama -->
+            <div class="slider-container">
+                <div class="slider-images" id="prenatal-slider">
+                    <img src="images/prenatal1.jpg" alt="Yoga Prénatal 1">
+                    <img src="images/prenatal2.jpg" alt="Yoga Prénatal 2">
+                    <img src="images/prenatal3.jpg" alt="Yoga Prénatal 3">
+                </div>
+            </div>
+            <div class="yoga-details">
+                <p><strong>Description :</strong> Yoga adapté aux femmes enceintes et post-partum, pour accompagner la grossesse et la récupération après l'accouchement.</p>
+                <p><strong>Âge :</strong> Femmes enceintes ou jeunes mamans</p>
+                <p><strong>Durée :</strong> 1h</p>
+                <p><strong>Nombre de places :</strong> 10 places disponibles</p>
+                <p><strong>Créneaux horaires :</strong> Mardi 14h - 15h</p>
+                <p><strong class="price">Tarif :</strong> 22€ par séance</p>
+            </div>
+        </section>
+
+        <!-- Yoga Parents & Bébé -->
+        <section id="yoga-parents-bebe" class="yoga-type">
+            <h2>Yoga Parents & Bébé</h2>
+            <!-- Diaporama -->
+            <div class="slider-container">
+                <div class="slider-images" id="parents-bebe-slider">
+                    <img src="images/parents-bebe1.jpg" alt="Yoga Parents & Bébé 1">
+                    <img src="images/parents-bebe2.jpg" alt="Yoga Parents & Bébé 2">
+                    <img src="images/parents-bebe3.jpg" alt="Yoga Parents & Bébé 3">
+                </div>
+            </div>
+            <div class="yoga-details">
+                <p><strong>Description :</strong> Un yoga doux où les parents pratiquent avec leur bébé dans un cadre serein et bienveillant, idéal pour le renforcement du lien parental.</p>
+                <p><strong>Âge :</strong> Parents et bébés de 3 à 12 mois</p>
+                <p><strong>Durée :</strong> 1h</p>
+                <p><strong>Nombre de places :</strong> 8 familles</p>
+                <p><strong>Créneaux horaires :</strong> Jeudi 9h30 - 10h30</p>
+                <p><strong class="price">Tarif :</strong> 18€ par séance</p>
+            </div>
+        </section>
+
+        <!-- Atelier « Connexion à soi » -->
+        <section id="atelier-connexion" class="yoga-type">
+            <h2>Atelier « Connexion à soi »</h2>
+            <!-- Diaporama -->
+            <div class="slider-container">
+                <div class="slider-images" id="connexion-slider">
+                    <img src="images/connexion1.jpg" alt="Atelier Connexion à soi 1">
+                    <img src="images/connexion2.jpg" alt="Atelier Connexion à soi 2">
+                    <img src="images/connexion3.jpg" alt="Atelier Connexion à soi 3">
+                </div>
+            </div>
+            <div class="yoga-details">
+                <p><strong>Description :</strong> Un atelier permettant de découvrir les différentes pratiques de méditation, de relaxation et de respiration pour mieux se connaître et se recentrer.</p>
+                <p><strong>Âge :</strong> Adultes</p>
+                <p><strong>Durée :</strong> 2h</p>
+                <p><strong>Nombre de places :</strong> 12 places disponibles</p>
+                <p><strong>Créneaux horaires :</strong> Samedi 14h - 16h</p>
+                <p><strong class="price">Tarif :</strong> 30€ par atelier</p>
+            </div>
         </section>
     </main>
 
-    <!-- Bande déroulante en bas -->
-    <div class="marquee-container">
-        <div class="marquee" id="marquee-text">
-            <!-- Le texte sera chargé ici par JavaScript -->
-        </div>
-    </div>
-
     <script>
-        // Fonction pour charger le texte depuis un fichier externe
-        function loadMarqueeText() {
-            fetch('marquee-text.txt') // Chemin vers ton fichier texte
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Fichier non trouvé');
-                    }
-                    return response.text();
-                })
-                .then(text => {
-                    // Insère le texte dans l'élément avec l'ID "marquee-text"
-                    document.getElementById('marquee-text').textContent = text;
-                })
-                .catch(error => {
-                    console.error('Erreur lors du chargement du texte :', error);
-                    document.getElementById('marquee-text').textContent = "Erreur de chargement du texte.";
-                });
+        // Fonction pour gérer le changement d'images du diaporama
+        function setupSlider(sliderId) {
+            let slider = document.getElementById(sliderId);
+            let images = slider.getElementsByTagName("img");
+            let currentIndex = 0;
+
+            setInterval(function() {
+                for (let i = 0; i < images.length; i++) {
+                    images[i].classList.add('hidden');
+                }
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.remove('hidden');
+            }, 3000);
         }
 
-        // Appelle la fonction au chargement de la page
-        window.onload = loadMarqueeText;
+        // Initialisation des diaporamas
+        setupSlider("hatha-slider");
+        setupSlider("ludique-slider");
+        setupSlider("plein-air-slider");
+        setupSlider("prenatal-slider");
+        setupSlider("parents-bebe-slider");
+        setupSlider("connexion-slider");
     </script>
 </body>
 </html>
