@@ -55,7 +55,10 @@
         }
 
         main section {
-            margin-bottom: 40px;  /* Augmentation de la marge entre les sections */
+    margin-bottom: 40px;  /* Augmentation de la marge entre les sections */
+    color: #000000;
+    font-family: "DMSans VariableFont opsz", wght;
+    font-size: 20px;
         }
 
         /* Espacement entre l'en-tête et le titre Bienvenue */
@@ -94,25 +97,6 @@
             position: relative;
         }
 
-        /* Par défaut, ajouter un fond semi-transparent autour du texte */
-        .card a::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent gris/noir */
-            border-radius: 4px;
-            z-index: -1; /* Pour que le fond soit derrière le texte */
-            padding: 5px 10px; /* Juste ce qu'il faut pour entourer le texte */
-        }
-
-        /* Lors du survol de la carte, enlever le fond semi-transparent et assombrir l'image */
-        .card:hover a::before {
-            background-color: transparent; /* Supprime le fond lors du survol */
-        }
-
         .card:hover {
             background-color: rgba(0, 0, 0, 0.3); /* Assombrissement de la carte */
         }
@@ -128,6 +112,7 @@
 	}
         
     </style>
+    <link href="ClickerScript_Regular/stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <header>
@@ -150,8 +135,9 @@
     </header>
     <main class="main-content">
         <section>
-            <p class="Textbody"><span style="font-size: 35pt; color: #AC4C2D;">Bienvenue !</span></p>
-            <p class="Textbody">Des Ateliers <strong>Yoga</strong>, <strong>Art</strong> et <strong>Montessori</strong> :</p>
+            <p class="Textbody"><span style="font-size: 40pt; color: #AC4C2D; font-family: 'ClickerScript Regular';"><strong>Bienvenue !</strong></span></p>
+            <p class="Textbody">Des Ateliers <strong>Yoga</strong>, <strong>Art</strong> et <strong>Montessori</strong> :<br>
+            </p>
             <p class="Textbody">Pour se reconnecter à soi, à son corps, sa créativité, ses émotions... Développer son autonomie et la confiance en soi… S'amuser, apprendre, se relaxer... déclinés pour les petits et les grands.</p>
             <p class="Textbody">Tout cela accompagné par Gaëlle, dans un cadre chaleureux et bienveillant au milieu de la nature Aubagnaise.</p>
             <p class="Textbody">Venez prendre soin de vous ou partager un moment en famille!</p>
@@ -160,24 +146,20 @@
             <div class="card-container">
                 <!-- Lien vers la page Yoga -->
                 <div class="card yoga">
-                    <a href="yoga.html">
-                        <h3>Yoga</h3>
-                    </a>
-                </div>
-
+    <h3><a href="yoga.html">Yoga</a></h3>
+    <button class="btn-en-savoir-plus" onclick="window.location.href='yoga.html'">En savoir plus</button>
+</div>
                 <!-- Lien vers la page Art -->
-                <div class="card art">
-                    <a href="art.html">
-                        <h3>Art</h3>
-                    </a>
-                </div>
+<div class="card art">
+    <h3><a href="art.html">Art</a></h3>
+    <button class="btn-en-savoir-plus" onclick="window.location.href='art.html'">En savoir plus</button>
+</div>
 
-                <!-- Lien vers la page Montessori -->
-                <div class="card montessori">
-                    <a href="montessori.html">
-                        <h3>Montessori</h3>
-                    </a>
-                </div>
+<!-- Lien vers la page Montessori -->
+<div class="card montessori">
+    <h3><a href="montessori.html">Montessori</a></h3>
+    <button class="btn-en-savoir-plus" onclick="window.location.href='montessori.html'">En savoir plus</button>
+</div>
             </div>
         </section>
     </main>
