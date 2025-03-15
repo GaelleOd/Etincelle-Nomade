@@ -232,7 +232,7 @@ input, textarea, button {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 26px;
-    font-family: "ClickerScript Regular";
+    font-family: "DMSans VariableFont opsz", wght;
 }
 
 textarea {
