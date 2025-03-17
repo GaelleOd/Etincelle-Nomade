@@ -18,38 +18,6 @@
             font-size: 18px;
             color: #5C5C5C;
         }
-        .marquee-container {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #883e2a;
-            color: #f9f2eb;
-            border-top: 2px solid #4a2c1f;
-            overflow: hidden;
-            white-space: nowrap;
-            padding: 10px 0;
-            text-align: center;
-            z-index: 1000;
-        }
-        .marquee {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 30s linear infinite;
-            font-size: 24px;
-        }
-        @keyframes marquee {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
-
-       main {
-            width: 90%;  /* Ajoute une largeur maximale */
-            max-width: 1200px;  /* Largeur maximale du contenu principal */
-            margin: 0 auto;  /* Centre le contenu */
-            padding: 40px 20px;  /* Espacement autour du contenu */
-	    margin-top: 120px;
-            box-sizing: border-box;
-        }
 
         main section {
             margin-bottom: 40px;  /* Augmentation de la marge entre les sections */
@@ -89,37 +57,14 @@
             <p>Faites découvrir à vos enfants les principes de la pédagogie Montessori à travers des activités ludiques et enrichissantes.</p>
             <p>Un environnement stimulant, adapté à leur rythme et à leurs besoins d'apprentissage.</p>
         </section>
+        <footer>
+            <p>&copy; 2025 - Étincelle Nomade</p>
+              <div class="social-links">
+                  <a href="https://www.facebook.com/EtincelleNomadeYoga?locale=fr_FR" target="_blank">Facebook</a>
+                  <a href="https://www.instagram.com/etincellenomadeyoga/" target="_blank">Instagram</a>
+              </div>
+          </footer>
     </main>
 
-    <!-- Bande déroulante en bas -->
-    <div class="marquee-container">
-        <div class="marquee" id="marquee-text">
-            <!-- Le texte sera chargé ici par JavaScript -->
-        </div>
-    </div>
-
-    <script>
-        // Fonction pour charger le texte depuis un fichier externe
-        function loadMarqueeText() {
-            fetch('marquee-text.txt') // Chemin vers ton fichier texte
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Fichier non trouvé');
-                    }
-                    return response.text();
-                })
-                .then(text => {
-                    // Insère le texte dans l'élément avec l'ID "marquee-text"
-                    document.getElementById('marquee-text').textContent = text;
-                })
-                .catch(error => {
-                    console.error('Erreur lors du chargement du texte :', error);
-                    document.getElementById('marquee-text').textContent = "Erreur de chargement du texte.";
-                });
-        }
-
-        // Appelle la fonction au chargement de la page
-        window.onload = loadMarqueeText;
-    </script>
 </body>
 </html>
