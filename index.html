@@ -6,112 +6,6 @@
     <title>Accueil - Étincelle Nomade</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-    @import url("PlaywriteHU_VariableFont_wght/stylesheet.css");
-@import url("BethEllen_Regular/stylesheet.css");
-
-        h1 {
-            font-size: 36px;
-            color: #DF9418;
-        }
-        h1, h2, h3, h4, h5, h6 {
-    font-family: "BethEllen Regular";
-        }
-        h2 {
-            font-size: 18px;
-            color: #5C5C5C;
-        }
-        .marquee-container {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #883e2a;
-            color: #f9f2eb;
-            border-top: 2px solid #4a2c1f;
-            overflow: hidden;
-            white-space: nowrap;
-            padding: 10px 0;
-            text-align: center;
-            z-index: 1000;
-        }
-        .marquee {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 30s linear infinite;
-            font-size: 24px;
-        }
-        @keyframes marquee {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
-
-        /* Espacement général des sections */
-        main {
-            width: 90%;  /* Ajoute une largeur maximale */
-            max-width: 1200px;  /* Largeur maximale du contenu principal */
-            margin: 0 auto;  /* Centre le contenu */
-            padding: 40px 20px;  /* Espacement autour du contenu */
-            box-sizing: border-box;
-        }
-
-        main section {
-    margin-bottom: 40px;  /* Augmentation de la marge entre les sections */
-    color: #000000;
-    font-family: "DMSans VariableFont opsz", wght;
-    font-size: 20px;
-        }
-
-        /* Espacement entre l'en-tête et le titre Bienvenue */
-        .main-content {
-            margin-top: 120px; /* Ajoute un espacement entre l'en-tête fixe et le contenu principal */
-        }
-
-        .card-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px; /* Espacement entre les vignettes */
-            margin-top: 30px;
-        }
-
-        .card {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 30%;
-            box-sizing: border-box;
-            transition: transform 0.3s ease-in-out;
-            position: relative; /* Position relative pour les liens absolus */
-        }
-
-        /* Ajouter un effet de survol sur les vignettes */
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        /* Style des liens */
-        .card a {
-            text-decoration: none;
-            color: #f9f2eb; /* Couleur du texte */
-            font-weight: bold;
-            position: relative;
-        }
-
-        .card:hover {
-            background-color: rgba(0, 0, 0, 0.3); /* Assombrissement de la carte */
-        }
-
-        .card:hover a {
-            color: #f9f2eb; /* Garde la couleur du texte claire */
-        }
-
-	footer {
-            position: relative;
-            z-index: 999; /* Pour qu'il passe au-dessus de la bande */
-            margin-bottom: 50px; /* Même hauteur que la bande */
-	}
-        
-    </style>
     <link href="ClickerScript_Regular/stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -155,7 +49,7 @@
     <button class="btn-en-savoir-plus" onclick="window.location.href='art.html'">En savoir plus</button>
 </div>
 
-<!-- Lien vers la page Montessori -->
+                <!-- Lien vers la page Montessori -->
 <div class="card montessori">
     <h3><a href="montessori.html">Montessori</a></h3>
     <button class="btn-en-savoir-plus" onclick="window.location.href='montessori.html'">En savoir plus</button>
