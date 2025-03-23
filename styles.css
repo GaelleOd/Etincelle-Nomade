@@ -548,4 +548,45 @@ footer {
     .card {
         width: 100%;
     }
+   /* Conteneur du texte et de l'image */
+   .text-image-container {
+    display: flex;
+    flex-direction: column; /* Organiser les éléments en colonne */
+    align-items: center; /* Centrer le contenu */
+    margin-bottom: 20px;
 }
+
+/* Diaporama */
+.diaporama-images {
+    margin-top: -25px;
+    width: 100%; /* Prend toute la largeur */
+    max-width: 100%; /* S'assurer que l'image ne dépasse pas */
+    height: 300px; /* Fixe la hauteur de l'image */
+    position: relative;
+    margin-bottom: -50px;
+}
+
+.diaporama-images img {
+    width: 100%; /* Taille de l'image */
+    height: 120%;
+    object-fit: contain; /* Garde l'aspect ratio de l'image */
+}
+
+/* Conteneur du texte */
+.text-image-container .text {
+    margin-bottom: -50px;
+}
+
+.text-image-container .text p {
+    margin-bottom: 15px;
+}
+
+/* Conteneur pour le texte en dessous de l'image */
+.text-below-image {
+    width: 90%; /* Prendre toute la largeur */
+    text-align: center; /* Centrer le texte */
+    padding: 0 20px;
+}
+
+}
+
