@@ -1,17 +1,21 @@
 @import url("BethEllen_Regular/stylesheet.css");
 @import url("ClickerScript_Regular/stylesheet.css");
+@import url("DMSans_Thin/stylesheet.css");
+@import url("PlaywriteHU_VariableFont_wght/stylesheet.css");
+
+
 
 h1 {
     font-size: 36px;
     color: #DF9418;
 }
-h1, h2, h3, h4, h5, h6 {
-font-family: "BethEllen Regular";
-}
+
 h2 {
-    font-size: 18px;
-    color: #5C5C5C;
-}
+    color: #AC4C2D;
+    font-family: "ClickerScript Regular";
+    font-size: 40px;
+        }
+
 .marquee-container {
     position: fixed;
     bottom: 0;
@@ -30,6 +34,8 @@ h2 {
     white-space: nowrap;
     animation: marquee 30s linear infinite;
     font-size: 24px;
+    font-family: "DMSans Thin";
+    font-weight: bold;
 }
 @keyframes marquee {
     from { transform: translateX(100%); }
@@ -46,24 +52,26 @@ body {
     color: #000000;
 }
 
+
 .content-section {
     margin-bottom: 40px;
 }
 
 /* En-tête fixe */
 header {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
     background: white;
-    padding: 0px 20px;
+    padding: 0px 0px;
     box-shadow: 2px -10px 31px 14px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     -webkit-box-shadow: 2px -10px 31px 14px rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -80,9 +88,9 @@ header {
  .title {
     text-align: center;
     font-family: "ClickerScript Regular";
-    font-size: 35pt;
+    font-size: 40pt;
     color: #AC4C2D;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
         }
 
 /* Titre du site */
@@ -157,14 +165,14 @@ nav ul li a:hover {
 /* Contenu principal */
 main {
     width: 90%;  /* Ajoute une largeur maximale */
-    padding: 40px 20px;  /* Espacement autour du contenu */
+    padding: 10px 20px;  /* Espacement autour du contenu */
     background: white;
     margin: 0 auto;  /* Centre le contenu */
     max-width: 1200px;  /* Largeur maximale du contenu principal */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    margin-top: 100px;
+    margin-top: 0px; /* Espace entre titre principal et debut du main */
 }
 
 main section {
@@ -246,6 +254,7 @@ main section {
 
 .card h3 {
     font-size: 39px;
+    font-family: "BethEllen Regular";
     margin-bottom: 10px;
     color: #F9F2EB;
     text-decoration: none;
@@ -280,18 +289,21 @@ main section {
     transform: translateX(-50%);
     padding: 10px 20px;
     background-color: #de4814 !important;
-    color:#f9f2eb !important;
+    color: #FFFFFF !important;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 19px;
     cursor: pointer;
     transition: background-color 0.3s ease !important;
     z-index: 2;
+    font-family: "DMSans Thin";
+    text-decoration: none;
 }
 
 /* Affiche le bouton au survol de la carte */
 .card:hover .btn-en-savoir-plus {
     display: block;
+    /* [disabled]font-family: "DMSans Thin"; */
 }
 
 .card a {
@@ -304,6 +316,7 @@ main section {
 /* Effet au survol du bouton */
 .card .btn-en-savoir-plus:hover {
     background-color: #b93e13 !important; /* Couleur plus foncée pour l'effet */
+    /* [disabled]font-family: "DMSans Thin"; */
 }
     /* Style pour l'image à gauche */
     .diaporama-images {
@@ -365,12 +378,6 @@ main section {
         
                 section {
                     margin-bottom: 40px;
-                }
-        
-                h2 {
-            color: #AC4C2D;
-            font-family: "ClickerScript Regular";
-            font-size: 40px;
                 }
         
                 .yoga-type {
@@ -439,7 +446,7 @@ form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background: #f9f9f9;
+    background: #f9f2eb;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -447,17 +454,18 @@ form {
 label {
     margin-top: 10px;
     font-weight: bold;
-    font-size: large;
-    font-family: "DMSans VariableFont opsz", wght;
+    /* [disabled]font-size: large; */
+    font-family: "DMSans Thin";
 }
 
 input, textarea, button {
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 26px;
-    font-family: "DMSans VariableFont opsz", wght;
+    border: 2px solid #d66831;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: "DMSans Thin";
+    font-weight: bold;
 }
 
 textarea {
@@ -465,16 +473,18 @@ textarea {
 }
 
 button {
-    background: #333;
-    color: white;
+    background: #ffffff;
+    color: #000000;
+    font-size: 25px;
     cursor: pointer;
     font-weight: bold;
     margin-top: 15px;
     transition: background 0.3s ease-in-out;
+    font-family: "DMSans Thin";
 }
 
 button:hover {
-    background: #ff6347;
+    background: #d66831;
     /* [disabled]font-size: x-large; */
 }
 
@@ -504,24 +514,35 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1158px) {
     .header-content {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px; /* Espacement entre les éléments */
+        padding: 10px;
     }
 
-    .logo, .site-title, nav {
-        width: 100%;
-        text-align: center;
+    .logo img {
+        width: 80px; /* Réduit la taille du logo */
+    }
+
+    .site-title h1 {
+        font-size: 30px; /* Titre plus petit */
     }
 
     nav ul {
-        flex-direction: column;
-        align-items: center;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; /* Permet de passer à la ligne si besoin */
+        gap: 10px; /* Espacement entre les liens */
+        padding: 0;
     }
 
     nav ul li {
-        margin: 10px 0;
+        display: inline-block;
+        font-size: 14px; /* Taille plus petite des liens */
+        margin: 5px;
     }
 
     .card {
