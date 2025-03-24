@@ -4,8 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planning - Étincelle Nomade</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- FullCalendar et jQuery -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    
+    <style>
+        #calendar {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #f9f2eb;
+            padding: 20px;
+            border: 2px solid #883e2a;
+            border-radius: 10px;
+        }
+
+        /* Infobulle au survol (agrandie) */
+        .tooltip {
+            position: absolute;
+            background:  #f9f2eb;
+            color: #000000;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            display: none;
+            max-width: 300px;
+            font-size: 20px;
+            font-family: "DMSans VariableFont opsz", wght;
+            z-index: 1000;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        /* Boîte d'infobulle au clic */
+        .event-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background:  #f9f2eb;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            z-index: 1050;
+            display: none;
+            width: 350px;
+            text-align: center;
+        }
+
+        .event-modal h2 {
+            color: #883e2a;
+            font-size: 50px;
+        }
+
+        .event-modal p {
+            font-size: 25px;
+            font-family: "DMSans VariableFont opsz", wght;
+            margin: 10px 0;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1049;
+        }
+
+        .close-btn {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #883e2a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        /* Changer la police des noms des jours (Lundi, Mardi...) */
+.fc-day-header {
+    font-family: "DMSans VariableFont opsz", wght;
+    font-size: 20px;
+    color: #883e2a; /* Changer la couleur si besoin */
+}
+
+/* Changer la police du nom du mois et du titre */
+.fc-center h2 {
+    font-family: "DMSans VariableFont opsz", wght;
+    font-size: 28px;
+    color: #883e2a;
+}
+/* Augmenter la hauteur des événements */
+.fc-event {
+    min-height: 40px !important; /* Augmente la hauteur */
+    line-height: 40px !important; /* Centre le texte verticalement */
+    padding: 1px; /* Ajoute de l’espace autour du texte */
+    font-size: 15px; /* Augmente la taille du texte */
+    font-family: "DMSans VariableFont opsz", wght;
+    text-align: center;
+}
+.fc-event .fc-title {
+    white-space: normal !important; /* Permet au texte de passer à la ligne */
+    font-size: 16px; /* Ajuste la taille du texte */
+}
+
+    </style>
 </head>
 <body>
     <header>
@@ -13,7 +122,7 @@
             <div class="logo">
                 <a href="index.html">
                 <img src="images/logo.png" alt="Logo Étincelle Nomade">
-            </a>
+                </a>
             </div>
             <div class="site-title">
                 <h1>Étincelle Nomade</h1>
@@ -36,21 +145,135 @@
                 </div>
         </div>
     </header>
-
     <main>
-        <section>
-            <h1 class="title">Planning</h1>
-            <p>Découvrez nos ateliers passionnants et enrichissants.</p>
-            <!-- Ajoutez ici le contenu spécifique aux ateliers -->
-        </section>
+        <div id="calendar"></div>
+        <div id="tooltip" class="tooltip"></div>
+        <div class="modal-overlay"></div>
+        <div class="event-modal">
+            <h2 id="modal-title"></h2>
+            <p><strong>📅 Horaire :</strong> <span id="modal-time"></span></p>
+            <p><strong>📍 Lieu :</strong> <span id="modal-location"></span></p>
+            <p><strong>📝 Description :</strong> <span id="modal-description"></span></p>
+            <button class="close-btn">Fermer</button>
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 - Étincelle Nomade</p>
-        <div class="social-links">
-            <a href="https://www.facebook.com/EtincelleNomadeYoga?locale=fr_FR" target="_blank">Facebook</a>
-            <a href="https://www.instagram.com/etincellenomadeyoga/" target="_blank">Instagram</a>
-        </div>
-    </footer>
+    <script>
+        const API_KEY = 'AIzaSyB7Qrzpa8AyAyd0HvccnUg6eyi7AZnYOXA';
+        const CALENDAR_ID = '0050746f629df9304b858786fa1a4045542a189da1c74904ce272aac22c91c27@group.calendar.google.com';
+
+        function loadCalendarAPI() {
+            gapi.client.setApiKey(API_KEY);
+            gapi.client.load('calendar', 'v3', function () {
+                fetchEvents();
+            });
+        }
+
+        function fetchEvents() {
+    const request = gapi.client.calendar.events.list({
+        calendarId: CALENDAR_ID,
+        timeMin: new Date().toISOString(),
+        showDeleted: false,
+        singleEvents: true,
+        orderBy: 'startTime',
+    });
+
+    request.execute(function (response) {
+        console.log(response); // Vérification de la réponse de l'API
+
+        if (response.items) {
+            const events = response.items.map(event => {
+                console.log(event);  // Vérification de chaque événement
+
+                // Vérifie si l'événement a un colorId et utilise la couleur correspondante
+                const colorId = event.colorId ? event.colorId : null;
+                const backgroundColor = colorId ? getColorFromGoogle(colorId) : "#883e2a"; // Couleur par défaut si colorId est manquant
+
+                return {
+                    title: event.summary,
+                    start: event.start.dateTime || event.start.date,
+                    end: event.end.dateTime || event.end.date,
+                    description: event.description || "Pas de description",
+                    location: event.location || "Lieu non spécifié",
+                    backgroundColor: backgroundColor,
+                    textColor: "white",
+                    allDay: event.start.date ? true : false
+                };
+            });
+
+            renderCalendar(events);
+        }
+    });
+        }
+
+        function renderCalendar(events) {
+    $('#calendar').fullCalendar({
+        events: events,
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+        },
+        timeFormat: 'HH:mm', // Format d'heure 24h
+        eventRender: function (event, element) {
+            let tooltip = $('#tooltip');
+
+            element.on('mouseenter', function (e) {
+                tooltip.html(`
+                    <strong>${event.title}</strong><br>
+                    📅 ${formatEventTime(event)}<br>
+                    📍 ${event.location}<br>
+                    📝 ${event.description}
+                `);
+                tooltip.css({ top: e.pageY + 15, left: e.pageX + 15 }).fadeIn(200);
+            }).on('mouseleave', function () {
+                tooltip.hide();
+            });
+
+            element.on('click', function () {
+                $('#modal-title').text(event.title);
+                $('#modal-time').text(formatEventTime(event));
+                $('#modal-location').text(event.location);
+                $('#modal-description').text(event.description);
+
+                $('.modal-overlay, .event-modal').fadeIn(200);
+            });
+        }
+    });
+
+    $('.modal-overlay, .close-btn').on('click', function () {
+        $('.modal-overlay, .event-modal').fadeOut(200);
+    });
+
+        }
+
+        function formatEventTime(event) {
+    if (event.allDay) {
+        return moment(event.start).format("DD/MM/YYYY");
+    } else {
+        return `${moment(event.start).format("HH:mm")} - ${moment(event.end).format("HH:mm")}`;
+    }
+}
+
+
+function getColorFromGoogle(colorId) {
+    const googleColors = {
+        "1": "#a4bdfc", // Bleu clair
+        "2": "#7ae7bf", // Vert clair
+        "3": "#dbadff", // Violet clair
+        "4": "#ff887c", // Rouge clair
+        "5": "#fbd75b", // Jaune clair
+        "6": "#ffb878", // Orange clair
+        "7": "#46d6db", // Bleu turquoise
+        "8": "#e1e1e1", // Gris
+        "9": "#5484ed", // Bleu foncé
+        "10": "#51b749", // Vert foncé
+        "11": "#dc2127"  // Rouge foncé
+    };
+
+    return googleColors[colorId] || "#883e2a"; // Si aucune couleur n'est définie, retourne la couleur par défaut (#883e2a)
+}
+
+        gapi.load('client:auth2', loadCalendarAPI);
+    </script>
 </body>
 </html>
