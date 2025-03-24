@@ -4,7 +4,6 @@
 @import url("PlaywriteHU_VariableFont_wght/stylesheet.css");
 
 
-
 h1 {
     font-size: 36px;
     color: #DF9418;
@@ -50,6 +49,7 @@ body {
     text-align: center;
     background: #f9f9f9;
     color: #000000;
+    padding-top: 110px; /* Ajuste la hauteur en fonction de celle du header */
 }
 
 
@@ -59,14 +59,14 @@ body {
 
 /* En-tête fixe */
 header {
-    position: relative;
+    position: fixed; /* Fixe le header en haut */
     top: 0;
     left: 0;
     width: 100%;
     background: white;
-    padding: 0px 0px;
+    padding: 5px 0; /* Ajout de padding pour un meilleur affichage */
     box-shadow: 2px -10px 31px 14px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 1000; /* S'assurer que le header est au-dessus des autres éléments */
     -webkit-box-shadow: 2px -10px 31px 14px rgba(0, 0, 0, 0.1);
 }
 
@@ -75,15 +75,54 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
+}
+/* Ajout des styles pour les icônes */
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espace entre les icônes */
+}
+
+.header-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Taille du bouton */
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0; /* Fond gris clair */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.header-icons a:hover {
+    background-color: #d66831; /* Couleur de survol */
+    transform: scale(1.5); /* Léger agrandissement au survol */
+}
+
+.header-icons svg {
+    width: 30x; /* Taille de l’icône */
+    height: 30px;
+    fill: #333; /* Couleur des icônes */
+    transition: fill 0.3s ease;
+}
+
+.header-icons a:hover svg {
+    fill: white; /* Icône devient blanche au survol */
 }
 
 /* Logo */
 .logo img {
     height: 100px;
     width: auto;
+    transition: transform 0.2s ease-in-out; /* Animation fluide */
 }
+
+.logo img:hover {
+    transform: scale(1.1); /* Légère augmentation de la taille */
+}
+
  /* Titre centré en haut */
  .title {
     text-align: center;
@@ -152,10 +191,13 @@ nav ul li a {
     font-weight: bold;
     font-size: 30px;
     font-family: "ClickerScript Regular";
+    display: inline-block; /* Permet l'agrandissement */
+    transition: transform 0.2s ease-in-out; /* Animation fluide */
 }
 
 nav ul li a:hover {
     color: #D66831;
+    transform: scale(1.1); /* Légère augmentation de la taille */
 }
 
 .active {
@@ -343,38 +385,85 @@ main section {
     .diaporama-images img.active {
         opacity: 1;
     }
-            
-        /* Styles pour le menu à gauche */
-        .side-nav {
-            position: fixed;
-            top: 120px; /* Positionner le menu juste en dessous de l'en-tête */
-            left: 0;
-            width: 200px;
-            padding: 20px;
-            background-color: #f4f4f4;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-            color: #883E2A;
-            font-family: "BethEllen Regular";
-            font-size: 15px;
-                }
-                .side-nav a {
-            display: block;
-            padding: 10px;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: #F9F2EB;
-            background-color: #C48C8C;
-            border-radius: 4px;
-            text-align: center;
-            font-family: "ClickerScript Regular";
-            font-size: 30px;
-            font-style: normal;
-            text-indent: 5px;
-            font-weight: bold;
-                }
-                .side-nav a:hover {
-            background-color: #D66831;
-                }
+        /* Styles pour le menu latéral */
+.side-nav {
+    position: fixed;
+    top: 120px; /* Positionner le menu juste en dessous de l'en-tête */
+    left: 0;
+    width: 200px;
+    padding: 20px;
+    background-color: #c48c8c;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    color: #f9f2eb;
+    font-family: "BethEllen Regular";
+    font-size: 25px;
+    transition: width 0.3s ease; /* Transition fluide pour l'animation */
+    border-radius: 5%;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3), /* Ombre principale */
+                -2px -2px 10px rgba(255, 255, 255, 0.2); /* Effet légèrement lumineux sur les bords */
+}
+
+.side-nav.closed {
+    width: 15px; /* Réduit la largeur quand le menu est fermé */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Réduire l'ombre pour donner un effet plus compact */
+    font-size: 0px; /* Cache le texte quand le menu est fermé */
+}
+
+.side-nav a {
+    display: block;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #000000;
+    background-color: #f9f2eb;
+    border-radius: 4px;
+    text-align: center;
+    font-family: "DMSans VariableFont opsz", wght;
+    font-size: 27px;
+    font-style: normal;
+    text-indent: 5px;
+    transition: opacity 0.3s ease; /* Transition pour cacher les liens */
+}
+
+.side-nav.closed a {
+    opacity: 0; /* Cache les liens quand le menu est fermé */
+    visibility: hidden; /* Empêche qu'ils soient accessibles */
+    pointer-events: none; /* Désactive complètement les clics */
+}
+
+.side-nav a:hover {
+    background-color: #c48c8c;
+}
+
+/* Style du bouton de dépliage */
+.btn-toggle {
+    position: absolute;
+    top: 50%; /* Centrer verticalement */
+    right: -30px; /* Positionner la flèche à droite du menu */
+    transform: translateY(-50%); /* Centrer parfaitement */
+    background-color: #c48c8c;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+    border-radius: 100%; /* Bord arrondi pour la flèche */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour l'effet de profondeur */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition fluide */
+}
+
+/* Effet au survol du bouton */
+.btn-toggle:hover {
+    background-color: #883e2a; /* Change de couleur quand on survole */
+    transform: scale(1.7); /* Agrandissement du bouton au survol */
+}
+
+/* Rotation de la flèche lorsque le menu est fermé */
+.side-nav.closed .btn-toggle svg {
+    transform: rotate(180deg); /* Change la direction de la flèche quand le menu est fermé */
+}
+
         
                 section {
                     margin-bottom: 40px;
@@ -407,29 +496,32 @@ main section {
             color: #000000;
                 }
         
-                /* Style pour le diaporama */
-                .slider-container {
-                    position: relative;
-                    width: 100%;
-                    max-height: 400px;
-                    overflow: hidden;
-                    border-radius: 8px;
-                    margin-bottom: 20px;
-                }
-        
-                .slider-images {
-                    display: flex;
-                    transition: transform 1s ease-in-out;
-                }
-        
-                .slider-images img {
-                    width: 100%;
-                    height: auto;
-                }
-        
-                .slider-images img.hidden {
-                    display: none;
-                }
+/* Style pour le diaporama ATELIER YOGA */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-height: 400px; /* Fixer la hauteur maximale du diaporama */
+    height: 400px; /* Hauteur fixe pour le diaporama */
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.slider-images {
+    display: flex;
+    transition: transform 1s ease-in-out;
+}
+
+.slider-images img {
+    width: 100%; /* Garder l'image à 100% de la largeur du conteneur */
+    height: 100%; /* Assurer que l'image occupe toute la hauteur du conteneur sans la dépasser */
+    object-fit: cover; /* Permet de maintenir l'aspect ratio de l'image et de remplir le conteneur sans la déformer */
+}
+
+.slider-images img.hidden {
+    display: none;
+}
+
 
 /* Services */
 .service {
@@ -513,6 +605,54 @@ footer {
     color: #ff6347;
 }
 
+.avis-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.avis {
+    width: 500px;
+    height: 265px;
+    box-sizing: border-box;
+}
+.avis-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+    justify-items: center; /* Centrer les éléments */
+}
+
+.avis {
+    width: 100%; /* Occupe toute la largeur de la cellule */
+    box-sizing: border-box;
+}
+
+/* Boutons de chargement */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 5px; /* Ajoute un espace entre les avis et les boutons */
+}
+
+#load-more, #load-less {
+    padding: 10px 20px;
+    background-color: #e3ad7f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    display: inline-block; /* Assurer que les boutons soient affichés en ligne */
+}
+
+#load-more:hover, #load-less:hover {
+    background-color: #883e2a;
+}
+
+
+
 /* Responsive Design */
 @media (max-width: 1158px) {
     .header-content {
@@ -587,6 +727,59 @@ footer {
     text-align: center; /* Centrer le texte */
     padding: 0 20px;
 }
-
+/* Style pour le diaporama ATELIER YOGA*/
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Hauteur fixe pour le diaporama */
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
+.slider-images {
+    display: flex;
+    transition: transform 1s ease-in-out;
+}
+
+.slider-images img {
+    width: 100%;
+    height: auto;
+}
+
+.slider-images img.hidden {
+    display: none;
+}
+/* Modifier la disposition du menu latéral pour l'afficher en haut sous le header */
+.side-nav {
+    position: relative; /* On enlève le positionnement fixe pour l'aligner en haut sous le header */
+    top: auto; /* On annule le top pour le menu */
+    left: auto; /* On annule la position gauche */
+    width: 100%; /* Faire en sorte que le menu occupe toute la largeur */
+    padding: 10px 0; /* Espacement intérieur pour donner de l'air */
+    font-size: 15px;
+    background-color: #f4f4f4; /* Ajouter une couleur de fond si nécessaire */
+    text-align: center; /* Centrer le contenu du menu */
+    z-index: 1; /* S'assurer que ce menu soit au-dessus du reste */
+}
+
+/* Styliser les liens du menu latéral */
+.side-nav a {
+    display: inline-block; /* Disposition des liens en ligne */
+    padding: 10px;
+    margin: 10px 20px; /* Espacement horizontal entre les liens */
+    border-radius: 4px;
+    font-size: 18px; /* Réduire la taille de la police */
+    font-weight: bold;
+    text-decoration: none; /* Retirer les soulignements des liens */
+    color: #ffffff; /* Choisir une couleur de texte */
+}
+
+.side-nav a:hover {
+    background-color: #ddd; /* Ajouter un fond au survol pour l'effet */
+}
+
+@media (min-width: 1158px) and (max-width: 1680px) {
+
+}
+}
