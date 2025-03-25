@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/locale/fr.js"></script>
+
     
     <style>
         #calendar {
@@ -252,10 +254,14 @@
 
         function renderCalendar(events) {
     $('#calendar').fullCalendar({
+        locale: 'fr', // Définir la langue en français
         events: events,
         header: {
             left: 'prev,next today',
             center: 'title',
+        },
+        buttonText: {
+            today: "Aujourd'hui"
         },
         timeFormat: 'HH:mm', // Format d'heure 24h
         eventRender: function (event, element) {
