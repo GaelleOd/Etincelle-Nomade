@@ -150,15 +150,14 @@
         <div id="tooltip" class="tooltip"></div>
         <div class="modal-overlay"></div>
         <div class="event-modal">
-            <h2 id="modal-title"></h2>
+            <p id="modal-title"></p>
             <p><strong>📅 Horaire :</strong> <span id="modal-time"></span></p>
             <p><strong>📍 Lieu :</strong> <span id="modal-location"></span></p>
             <p><strong>📝 Description :</strong> <span id="modal-description"></span></p>
         
-            <button class="contact-btn">Me Contacter</button>
+            <button class="contact-btn">Reserver</button>
         
             <div class="contact-form" style="display: none;">
-                <h3>Contact</h3>
                 <form id="event-contact-form" name="event-reservation" method="POST" data-netlify="true">
                     <input type="hidden" name="form-name" value="event-reservation">
                     
@@ -176,7 +175,7 @@
                     <label for="phone">Téléphone (facultatif) :</label>
                     <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Ex : 0612345678">
                     
-                    <button type="submit">Envoyer</button>
+                    <button type="submit">Valider</button>
                 </form>
             </div>
         
@@ -196,7 +195,7 @@
         
                 $('#event-contact-form').on('submit', function(e) {
                     // Ne pas empêcher la soumission pour que Netlify fonctionne
-                    alert('Votre réservation a bien été envoyée !');
+                    alert('Votre réservation a bien été envoyée ! Je vous envoie une confirmation bientôt');
                     $('.contact-form').slideUp();
                 });
             });
