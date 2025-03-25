@@ -150,12 +150,57 @@
         <div id="tooltip" class="tooltip"></div>
         <div class="modal-overlay"></div>
         <div class="event-modal">
-            <h2 id="modal-title"></h2>
+            <p id="modal-title"></p>
             <p><strong>📅 Horaire :</strong> <span id="modal-time"></span></p>
             <p><strong>📍 Lieu :</strong> <span id="modal-location"></span></p>
             <p><strong>📝 Description :</strong> <span id="modal-description"></span></p>
+            
+            <button class="contact-btn">Reserver</button>
+            
+            <div class="contact-form" style="display: none;">
+                <form id="event-contact-form" name="contact" method="POST" data-netlify="true">
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" name="name" required>
+                
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" required>
+                
+                    <label for="phone">Téléphone (facultatif) :</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Ex : 0612345678">
+                
+                    <button type="submit">Envoyer</button>
+                </form>
+            </div>
+            
             <button class="close-btn">Fermer</button>
         </div>
+        
+        <script>
+            $(document).ready(function() {
+                $('.contact-btn').on('click', function() {
+                    $('.contact-form').slideToggle();
+                });
+        
+                document.getElementById("event-contact-form").addEventListener("submit", function(event) {
+                    event.preventDefault();
+        
+                    const form = event.target;
+                    const formData = new FormData(form);
+        
+                    fetch("/", {
+                        method: "POST",
+                        body: formData,
+                    })
+                    .then(() => {
+                        alert("Votre reservation a bien été envoyé ! Merci, je vous envoie un mail de confirmation au plus vite.");
+                        form.reset();
+                        $('.contact-form').slideUp();
+                    })
+                    .catch(() => alert("Une erreur est survenue, veuillez réessayer."));
+                });
+            });
+        </script>
+        
     </main>
 
     <script>
@@ -275,9 +320,10 @@ function getColorFromGoogle(colorId) {
 
         gapi.load('client:auth2', loadCalendarAPI);
     </script>
+    <div class="fond-footer">
         <footer>
-            <div class="header-icons">
-                <a href="https://www.instagram.com/etincellenomadeyoga/" target="_blank">
+            <div class="header-icons-footer">
+                <a href="https://www.instagram.com/etincellenomade/" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><path d="M 35.75 14 C 15.579 14 14 15.579 14 35.75 L 14 36.25 C 14 56.421 15.579 58 35.75 58 L 36.25 58 C 56.421 58 58 56.421 58 36.25 L 58 35.75 C 58 15.579 56.421 14 36.25 14 L 35.75 14 z M 30 22 L 42 22 C 49.419 22 50 22.581 50 30 L 50 42 C 50 49.419 49.419 50 42 50 L 30 50 C 22.581 50 22 49.419 22 42 L 22 30 C 22 22.581 22.581 22 30 22 z M 45.496094 25 C 44.668094 25.002 43.998 25.674906 44 26.503906 C 44.002 27.331906 44.674906 28.002 45.503906 28 C 46.331906 27.998 47.002 27.325094 47 26.496094 C 46.998 25.668094 46.325094 24.998 45.496094 25 z M 35.976562 26 C 30.454563 26.013 25.987 30.501437 26 36.023438 C 26.013 41.545437 30.501437 46.013 36.023438 46 C 41.545437 45.987 46.013 41.498562 46 35.976562 C 45.987 30.454563 41.498562 25.987 35.976562 26 z M 35.990234 32 C 38.199234 31.995 39.994 33.781234 40 35.990234 C 40.005 38.199234 38.218766 39.995 36.009766 40 C 33.800766 40.005 32.006 38.218766 32 36.009766 C 31.995 33.800766 33.781234 32.006 35.990234 32 z"></path></svg></a>
                     <p>Instagram</p>
                     <svg width="50px" height="50px" viewBox="-8.11 0 195.31 195.31" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:#ffffff;}</style></defs>
@@ -375,5 +421,6 @@ function getColorFromGoogle(colorId) {
             <p>Des Ateliers Yoga, Art et Montessori : Pour se reconnecter à soi, à son corps, sa créativité, ses émotions... Développer son autonomie et la confiance en soi… S'amuser, apprendre, se relaxer... déclinés pour les petits et les grands.
           <p>&copy; 2025 - Étincelle Nomade</p>
           <footer>
+        </div>
 </body>
 </html>
