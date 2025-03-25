@@ -82,7 +82,7 @@ header {
 .header-icons {
     display: flex;
     align-items: center;
-    gap: 15px; /* Espace entre les icônes */
+    gap: 15px; /* Espace entre les icônes */ 
 }
 
 .header-icons a {
@@ -95,7 +95,6 @@ header {
     background-color: #f0f0f0; /* Fond gris clair */
     transition: background 0.3s ease, transform 0.2s ease;
 }
-
 .header-icons a:hover {
     background-color: #d66831; /* Couleur de survol */
     transform: scale(1.5); /* Léger agrandissement au survol */
@@ -109,9 +108,63 @@ header {
 }
 
 .header-icons a:hover svg {
-    fill: white; /* Icône devient blanche au survol */
+    fill: rgb(0, 0, 0); /* Icône devient blanche au survol */
+}
+.header-icons-footer {
+    gap: 15px; /* Espace entre les icônes */
+    color: #000000;
+    padding: 0px;
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Ajuste la largeur max du contenu */
+    margin: 20px auto 10px auto; /* Centre horizontalement */
+    font-family: "DMSans VariableFont opsz"; 
+    font-size: 18px;
+    z-index: 999;
+
+    /* Centrer le contenu */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* Permettre aux éléments de passer à la ligne */
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    white-space: normal;
+    
 }
 
+.header-icons-footer a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Taille du bouton */
+    height: 40px;
+    border-radius: 50%;
+    background-color: #c48c8c; /* Fond gris clair */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+.header-icons-footer a:hover {
+    background-color: #f9f2eb; /* Couleur de survol */
+    transform: scale(1.5); /* Léger agrandissement au survol */
+}
+
+.header-icons-footer svg {
+    width: 30x; /* Taille de l’icône */
+    height: 30px;
+    fill: #000000; /* Couleur des icônes */
+    transition: fill 0.3s ease;
+}
+
+.header-icons-footer a:hover svg {
+    fill: rgb(0, 0, 0); /* Icône devient blanche au survol */
+}
+.fond-footer{
+    background-color: #c48c8c;
+    border: 2px solid #000; /* Bordure noire de 5px */
+    border-radius: 10px; /* Coins légèrement arrondis (optionnel) */
+}
 /* Logo */
 .logo img {
     height: 100px;
@@ -455,7 +508,7 @@ main section {
     right: -30px; /* Positionner la flèche à droite du menu */
     transform: translateY(-50%); /* Centrer parfaitement */
     background-color: #c48c8c;
-    border: none;
+    border: 2px solid #f9f2eb; /* Bordure noire*/
     color: #fff;
     font-size: 30px;
     cursor: pointer;
@@ -593,20 +646,30 @@ button:hover {
     /* [disabled]font-size: x-large; */
 }
 
-/* Pied de page */
 footer {
-    background: transparent;
-    color: #333;
-    padding: 10px;
+    color: #000000;
+    padding: 0px;
     position: relative;
     width: 100%;
-    margin-top: 20px;
-    border-top: 1px solid #ddd;
-    font-family: "DMSans VariableFont opsz", wght;
-    font-size: 18px;
-    z-index: 999; /* Pour qu'il passe au-dessus de la bande */
-    margin-bottom: 50px; /* Même hauteur que la bande */
+    max-width: 800px; /* Ajuste la largeur max du contenu */
+    margin: 20px auto 50px auto; /* Centre horizontalement */
+    font-family: "DMSans VariableFont opsz", sans-serif;
+    font-size: 17px;
+    z-index: 999;
+
+    /* Centrer le contenu */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* Permettre aux éléments de passer à la ligne */
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    white-space: normal;
 }
+
+
 
 .social-links a {
     color: #333;
