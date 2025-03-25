@@ -163,8 +163,8 @@
                     
                     <!-- Champs cachés pour envoyer les infos de l'événement -->
                     <input type="hidden" name="Atelier" id="event-title">
-                    <input type="hidden" name="event-time" id="event-time">
-                    <input type="hidden" name="event-location" id="event-location">
+                    <input type="hidden" name="Horaire" id="event-time">
+                    <input type="hidden" name="Lieu" id="event-location">
         
                     <label for="name">Nom :</label>
                     <input type="text" id="name" name="name" required>
@@ -186,7 +186,7 @@
             $(document).ready(function() {
                 $('.contact-btn').on('click', function() {
                     // Remplissage des champs cachés avec les infos de l'événement
-                    $('#Atelier').val($('#modal-title').text());
+                    $('#event-title').val($('#modal-title').text());
                     $('#event-time').val($('#modal-time').text());
                     $('#event-location').val($('#modal-location').text());
         
