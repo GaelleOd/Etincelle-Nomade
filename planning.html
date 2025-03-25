@@ -150,36 +150,36 @@
         <div id="tooltip" class="tooltip"></div>
         <div class="modal-overlay"></div>
         <div class="event-modal">
-            <p id="modal-title"></p>
+            <h2 id="modal-title"></h2>
             <p><strong>📅 Horaire :</strong> <span id="modal-time"></span></p>
             <p><strong>📍 Lieu :</strong> <span id="modal-location"></span></p>
             <p><strong>📝 Description :</strong> <span id="modal-description"></span></p>
-            
-            <button class="contact-btn">Reserver</button>
-            
+        
+            <button class="contact-btn">Me Contacter</button>
+        
             <div class="contact-form" style="display: none;">
                 <h3>Contact</h3>
                 <form id="event-contact-form" name="contact" method="POST" data-netlify="true">
                     <input type="hidden" name="form-name" value="contact">
-        
-                    <!-- Champs cachés pour stocker les infos de l'événement -->
+                    
+                    <!-- Champs cachés pour envoyer les infos de l'événement -->
                     <input type="hidden" name="event-title" id="event-title">
                     <input type="hidden" name="event-time" id="event-time">
                     <input type="hidden" name="event-location" id="event-location">
         
                     <label for="name">Nom :</label>
                     <input type="text" id="name" name="name" required>
-                    
+        
                     <label for="email">Email :</label>
                     <input type="email" id="email" name="email" required>
-                    
+        
                     <label for="phone">Téléphone (facultatif) :</label>
                     <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Ex : 0612345678">
-        
+                    
                     <button type="submit">Envoyer</button>
                 </form>
             </div>
-            
+        
             <button class="close-btn">Fermer</button>
         </div>
         
@@ -195,7 +195,7 @@
                 });
         
                 $('#event-contact-form').on('submit', function(e) {
-                    e.preventDefault();
+                    // Ne pas empêcher la soumission pour que Netlify fonctionne
                     alert('Votre réservation a bien été envoyée !');
                     $('.contact-form').slideUp();
                 });
