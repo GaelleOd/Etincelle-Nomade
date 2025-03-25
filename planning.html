@@ -162,7 +162,7 @@
                     <input type="hidden" name="form-name" value="event-reservation">
                     
                     <!-- Champs cachés pour envoyer les infos de l'événement -->
-                    <input type="hidden" name="event-title" id="event-title">
+                    <input type="hidden" name="Atelier" id="event-title">
                     <input type="hidden" name="event-time" id="event-time">
                     <input type="hidden" name="event-location" id="event-location">
         
@@ -186,7 +186,7 @@
             $(document).ready(function() {
                 $('.contact-btn').on('click', function() {
                     // Remplissage des champs cachés avec les infos de l'événement
-                    $('#event-title').val($('#modal-title').text());
+                    $('#Atelier').val($('#modal-title').text());
                     $('#event-time').val($('#modal-time').text());
                     $('#event-location').val($('#modal-location').text());
         
