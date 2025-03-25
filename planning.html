@@ -201,37 +201,6 @@
                 });
             });
         </script>
-        
-        <script>
-       $(document).ready(function() {
-    // Quand l'utilisateur clique sur "Reserver"
-    $('.contact-btn').on('click', function() {
-        // Remplir les champs cachés avec les informations de l'événement
-        var eventTitle = $('#modal-title').text();
-        var eventTime = $('#modal-time').text();
-        var eventLocation = $('#modal-location').text();
-
-        $('#event-title').val(eventTitle); // Remplir le titre de l'événement
-        $('#event-time').val(eventTime); // Remplir l'heure de l'événement
-        $('#event-location').val(eventLocation); // Remplir le lieu de l'événement
-        
-        // Afficher le formulaire
-        $('.contact-form').slideToggle();
-    });
-
-    // Quand le formulaire est soumis
-    $('#event-contact-form').on('submit', function(e) {
-        e.preventDefault();
-
-        // Afficher un message de succès
-        alert('Votre réservation a bien été envoyée !');
-
-        // Cacher le formulaire
-        $('.contact-form').slideUp();
-    });
-});
-        </script>
-        
     </main>
 
     <script>
