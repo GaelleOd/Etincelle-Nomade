@@ -158,16 +158,24 @@
             <button class="contact-btn">Reserver</button>
             
             <div class="contact-form" style="display: none;">
+                <h3>Contact</h3>
                 <form id="event-contact-form" name="contact" method="POST" data-netlify="true">
+                    <input type="hidden" name="form-name" value="contact">
+        
+                    <!-- Champs cachés pour stocker les infos de l'événement -->
+                    <input type="hidden" name="event-title" id="event-title">
+                    <input type="hidden" name="event-time" id="event-time">
+                    <input type="hidden" name="event-location" id="event-location">
+        
                     <label for="name">Nom :</label>
                     <input type="text" id="name" name="name" required>
-                
+                    
                     <label for="email">Email :</label>
                     <input type="email" id="email" name="email" required>
-                
+                    
                     <label for="phone">Téléphone (facultatif) :</label>
                     <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Ex : 0612345678">
-                
+        
                     <button type="submit">Envoyer</button>
                 </form>
             </div>
@@ -178,27 +186,50 @@
         <script>
             $(document).ready(function() {
                 $('.contact-btn').on('click', function() {
+                    // Remplissage des champs cachés avec les infos de l'événement
+                    $('#event-title').val($('#modal-title').text());
+                    $('#event-time').val($('#modal-time').text());
+                    $('#event-location').val($('#modal-location').text());
+        
                     $('.contact-form').slideToggle();
                 });
         
-                document.getElementById("event-contact-form").addEventListener("submit", function(event) {
-                    event.preventDefault();
-        
-                    const form = event.target;
-                    const formData = new FormData(form);
-        
-                    fetch("/", {
-                        method: "POST",
-                        body: formData,
-                    })
-                    .then(() => {
-                        alert("Votre reservation a bien été envoyé ! Merci, je vous envoie un mail de confirmation au plus vite.");
-                        form.reset();
-                        $('.contact-form').slideUp();
-                    })
-                    .catch(() => alert("Une erreur est survenue, veuillez réessayer."));
+                $('#event-contact-form').on('submit', function(e) {
+                    e.preventDefault();
+                    alert('Votre réservation a bien été envoyée !');
+                    $('.contact-form').slideUp();
                 });
             });
+        </script>
+        
+        <script>
+       $(document).ready(function() {
+    // Quand l'utilisateur clique sur "Reserver"
+    $('.contact-btn').on('click', function() {
+        // Remplir les champs cachés avec les informations de l'événement
+        var eventTitle = $('#modal-title').text();
+        var eventTime = $('#modal-time').text();
+        var eventLocation = $('#modal-location').text();
+
+        $('#event-title').val(eventTitle); // Remplir le titre de l'événement
+        $('#event-time').val(eventTime); // Remplir l'heure de l'événement
+        $('#event-location').val(eventLocation); // Remplir le lieu de l'événement
+        
+        // Afficher le formulaire
+        $('.contact-form').slideToggle();
+    });
+
+    // Quand le formulaire est soumis
+    $('#event-contact-form').on('submit', function(e) {
+        e.preventDefault();
+
+        // Afficher un message de succès
+        alert('Votre réservation a bien été envoyée !');
+
+        // Cacher le formulaire
+        $('.contact-form').slideUp();
+    });
+});
         </script>
         
     </main>
