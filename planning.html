@@ -153,14 +153,14 @@
         <div class="modal-overlay"></div>
         <div class="event-modal">
             <p id="modal-title"></p>
-            <p><strong>📅 Horaire :</strong> <span id="modal-time"></span></p>
-            <p><strong>📍 Lieu :</strong> <span id="modal-location"></span></p>
-            <p><strong>📝 Description :</strong> <span id="modal-description"></span></p>
+            <p><strong>📅 :</strong> <span id="modal-time"></span></p>
+            <p><strong>📍 :</strong> <span id="modal-location"></span></p>
+            <p><strong>📝 :</strong> <span id="modal-description"></span></p>
         
             <button class="contact-btn">Reserver</button>
         
             <div class="contact-form" style="display: none;">
-                <form id="event-contact-form" name="event-reservation" method="POST" data-netlify="true">
+                <form id="event-contact-form" name="event-reservation" method="POST" data-netlify="true" action="merci-reservation.html">
                     <input type="hidden" name="form-name" value="event-reservation">
                     
                     <!-- Champs cachés pour envoyer les infos de l'événement -->
