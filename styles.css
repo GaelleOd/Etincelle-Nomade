@@ -554,6 +554,7 @@ main section {
     margin: 1rem 0;
     font-family: "DMSans VariableFont opsz", wght;
     font-size: 20px;
+
 }
 
 .event-list li {
@@ -590,6 +591,19 @@ main section {
     align-items: center;
     justify-content: center;
     transition: opacity 0.3s ease;
+
+}
+
+.event-list li {
+    padding: 10px 15px;
+    margin: 5px 0;
+    background-color: #f9f2eb;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.event-list li:hover {
+    background-color: #d08b6b;
 }
 
 /* Menu principal */
