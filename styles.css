@@ -3,7 +3,6 @@
 @import url("DMSans_Thin/stylesheet.css");
 @import url("PlaywriteHU_VariableFont_wght/stylesheet.css");
 
-
 h1 {
     font-size: 36px;
     color: #DF9418;
@@ -50,6 +49,8 @@ body {
     background: #f9f9f9;
     color: #000000;
     padding-top: 110px; /* Ajuste la hauteur en fonction de celle du header */
+    overflow-x: hidden; /* ← évite que tout déborde horizontalement */
+
 }
 
 
@@ -121,6 +122,7 @@ header {
     font-family: "DMSans VariableFont opsz"; 
     font-size: 18px;
     z-index: 999;
+    margin-bottom: -55px;
 
     /* Centrer le contenu */
     display: flex;
@@ -443,94 +445,192 @@ main section {
         box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
     }
     #calendar {
-        max-width: 1200px;
-        margin: 0 auto;
+        max-width: 1200px;   /* Largeur maximale du calendrier */
+        width: 100%;         /* Pour que le calendrier prenne toute la largeur disponible */
+        margin: 20px auto 0; /* Ajoutez une marge en haut (50px ou plus selon vos besoins) */
         background-color: #f9f2eb;
-        padding: 20px;
-        border: 2px solid #883e2a;
+        padding: 0px;
+        border: 3px solid #883e2a;
         border-radius: 10px;
     }
     
-        /* Styles pour le menu latéral */
+    /* Changer la hauteur de la grille des jours */
+    .fc-day-grid .fc-day {
+        height: 30px !important;  /* Réduire la hauteur des cases des jours */
+        min-height: 30px !important; /* Fixer la hauteur min des cases */
+    }
+    
+    /* Changer la taille de la police des en-têtes (Lundi, Mardi...) */
+    .fc-day-header {
+        font-family: "DMSans VariableFont opsz", wght;
+        font-size: 18px;  /* Taille de police plus petite */
+        color: #883e2a;
+    }
+    
+    /* Changer le style du mois au centre */
+    .fc-center h2 {
+        font-family: "DMSans VariableFont opsz", wght;
+        font-size: 30px;   /* Taille de police plus petite */
+        color: #883e2a;
+    }
+    
+    /* Ajuster la hauteur des événements */
+    .fc-event {
+        min-height: 25px !important; /* Hauteur réduite des événements */
+        line-height: 25px !important; /* Ajuster l'alignement du texte dans les événements */
+        font-size: 12px;  /* Réduire la taille de la police des événements */
+        text-align: center;
+        padding: 3px 0;   /* Réduire l'espace autour du texte */
+    }
+    
+    /* Changer le style des événements lorsqu'ils sont affichés */
+    .fc-event .fc-title {
+        white-space: normal !important; /* Permet au texte de passer à la ligne */
+        font-size: 12px; /* Ajuster la taille de la police */
+    }
+    
+    /* Infobulle */
+    .tooltip {
+        position: absolute;
+        background: #f9f2eb;
+        color: #000000;
+        padding: 10px;  /* Réduire la taille de la boîte info-bulle */
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        display: none;
+        max-width: 300px;
+        font-size: 18px;  /* Réduire la taille de la police de l'info-bulle */
+        font-family: "DMSans VariableFont opsz", wght;
+        z-index: 1000;
+        transition: opacity 0.2s ease-in-out;
+    }
+    
+    /* Boîte d'infobulle au clic */
+    .event-modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #f9f2eb;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        z-index: 1050;
+        display: none;
+        width: 300px;  /* Réduire la largeur de la boîte modale */
+        text-align: center;
+    }
+    
+    /* Réduire la taille des boutons */
+    .close-btn, .contact-btn {
+        margin-top: 10px;
+        padding: 8px 12px;  /* Réduire la taille des boutons */
+        background: #883e2a;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    /* Overlay de la modale */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        z-index: 1049;
+    }
+    
+/* Cacher le côté gauche de la barre d'en-tête */
+.fc-header-toolbar .fc-left {
+    display: none;
+}   
+.event-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    font-family: "DMSans VariableFont opsz", wght;
+    font-size: 20px;
+}
+
+.event-list li {
+    padding: 10px 15px;
+    margin: 5px 0;
+    background-color: #f9f2eb;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.event-list li:hover {
+    background-color: #d08b6b;
+}
+.disabled-event {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
 .side-nav {
-    position: fixed;
-    top: 120px; /* Positionner le menu juste en dessous de l'en-tête */
-    left: 0;
-    width: 200px;
-    padding: 20px;
-    background-color: #c48c8c;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    color: #f9f2eb;
-    font-family: "BethEllen Regular";
-    font-size: 25px;
-    transition: width 0.3s ease; /* Transition fluide pour l'animation */
-    border-radius: 5%;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3), /* Ombre principale */
-                -2px -2px 10px rgba(255, 255, 255, 0.2); /* Effet légèrement lumineux sur les bords */
+    position: relative;
+    width: 100%;
+    background-color: #f4f4f4;
+    padding: 10px 40px 10px 10px; /* un peu plus à droite pour laisser de la place au bouton */
+    text-align: left;
+    z-index: 1;
+    overflow: hidden;
+    transition: height 0.3s ease;
 }
 
-.side-nav.closed {
-    width: 15px; /* Réduit la largeur quand le menu est fermé */
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Réduire l'ombre pour donner un effet plus compact */
-    font-size: 0px; /* Cache le texte quand le menu est fermé */
+.menu-links {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
 }
 
-.side-nav a {
-    display: block;
-    padding: 10px;
-    margin-bottom: 10px;
+/* Menu principal */
+.main-nav {
+    position: sticky;
+    top: 120px;  /* Ajuste cette valeur pour être juste en dessous de ton header */
+    width: 100%;
+    background-color: #f9f2eb;
+    z-index: 1000;  /* Menu doit être au-dessus de tous les autres éléments */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    margin-top: 20px;  /* Pour séparer un peu du header */
+  }
+  
+  /* Liens dans le menu */
+  .menu-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .menu-links a {
+    padding: 10px 15px;
     text-decoration: none;
     color: #000000;
     background-color: #f9f2eb;
-    border-radius: 4px;
-    text-align: center;
+    border-radius: 5px;
     font-family: "DMSans VariableFont opsz", wght;
-    font-size: 27px;
-    font-style: normal;
-    text-indent: 5px;
-    transition: opacity 0.3s ease; /* Transition pour cacher les liens */
-}
-
-.side-nav.closed a {
-    opacity: 0; /* Cache les liens quand le menu est fermé */
-    visibility: hidden; /* Empêche qu'ils soient accessibles */
-    pointer-events: none; /* Désactive complètement les clics */
-}
-
-.side-nav a:hover {
+    font-size: 22px;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-links a:hover {
     background-color: #c48c8c;
+  }
+  .page-art .menu-links a:hover {
+    background-color: #883e2a; /* Remplace cette couleur par la couleur de ton choix */
 }
 
-/* Style du bouton de dépliage */
-.btn-toggle {
-    position: absolute;
-    top: 50%; /* Centrer verticalement */
-    right: -30px; /* Positionner la flèche à droite du menu */
-    transform: translateY(-50%); /* Centrer parfaitement */
-    background-color: #c48c8c;
-    border: 2px solid #f9f2eb; /* Bordure noire*/
-    color: #fff;
-    font-size: 30px;
-    cursor: pointer;
-    display: block;
-    padding: 10px;
-    border-radius: 100%; /* Bord arrondi pour la flèche */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre pour l'effet de profondeur */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition fluide */
-}
-
-/* Effet au survol du bouton */
-.btn-toggle:hover {
-    background-color: #883e2a; /* Change de couleur quand on survole */
-    transform: scale(1.7); /* Agrandissement du bouton au survol */
-}
-
-/* Rotation de la flèche lorsque le menu est fermé */
-.side-nav.closed .btn-toggle svg {
-    transform: rotate(180deg); /* Change la direction de la flèche quand le menu est fermé */
-}
-
-        
                 section {
                     margin-bottom: 40px;
                 }
@@ -561,16 +661,59 @@ main section {
             font-weight: bold;
             color: #000000;
                 }
+                .art-type {
+                    margin-bottom: 30px;
+                }
+            
+                .art-details {
+                    background-color: #f9f9f9;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    color: #000000;
+                    font-family: "DMSans VariableFont opsz", wght;
+                    font-size: 20px;
+                }
+            
+                .art-details p {
+                    margin: 10px 0;
+                    color: #000000;
+                    font-family: "DMSans VariableFont opsz", wght;
+                    font-size: 21px;
+                }
+            
+                .art-details .price {
+                    font-weight: bold;
+                    color: #000000;
+                }
+            
+                /* Diaporama */
+                .slider-container {
+                    margin: 20px 0;
+                }
+            
+                .slider-images {
+                    display: flex;
+                    overflow-x: auto;
+                    gap: 10px;
+                }
+            
+                .slider-images img {
+                    max-width: 100%;
+                    height: auto;
+                    border-radius: 5px;
+                }
         
 /* Style pour le diaporama ATELIER YOGA */
 .slider-container {
     position: relative;
     width: 100%;
-    max-height: 400px; /* Fixer la hauteur maximale du diaporama */
-    height: 400px; /* Hauteur fixe pour le diaporama */
+    height: auto;
+    aspect-ratio: 16/9; /* Ajuste la hauteur en fonction de la largeur */
     overflow: hidden;
     border-radius: 8px;
     margin-bottom: 20px;
+    
 }
 
 .slider-images {
@@ -582,6 +725,7 @@ main section {
     width: 100%; /* Garder l'image à 100% de la largeur du conteneur */
     height: 100%; /* Assurer que l'image occupe toute la hauteur du conteneur sans la dépasser */
     object-fit: cover; /* Permet de maintenir l'aspect ratio de l'image et de remplir le conteneur sans la déformer */
+    object-position: center; /* Centre l'image automatiquement */
 }
 
 .slider-images img.hidden {
@@ -681,18 +825,6 @@ footer {
     color: #ff6347;
 }
 
-.avis-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
-
-.avis {
-    width: 500px;
-    height: 265px;
-    box-sizing: border-box;
-}
 .avis-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
@@ -854,9 +986,107 @@ footer {
 .side-nav a:hover {
     background-color: #ddd; /* Ajouter un fond au survol pour l'effet */
 }
-
-@media (min-width: 1158px) and (max-width: 1680px) {
-
+}
+@media (max-width: 320px) {
+    nav ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; /* Permet de passer à la ligne si besoin */
+        gap: 5px; /* Espacement entre les liens */
+        padding: 0;
+    }
 }
 
+@media (min-width: 320px) and (max-width: 425px) {
+
+    main section {
+            font-size: 18px;
+                }
+    /* Titre centré en haut */
+ .title {
+    font-size: 30pt;
+    margin-bottom: 20px;
+        }
+    /* Header content */
+    .header-content {
+        display: flex;
+        width: 100%; /* Utilise toute la largeur */
+        padding: 0px;
+    }
+
+    /* Logo */
+    .logo img {
+        height: 55px; /* Réduire la taille du logo */
+    }
+
+    /* Titre du site */
+    .site-title h1 {
+        font-size: 21px; /* Réduire la taille du titre */
+        text-align: center; /* Centrer le texte du titre */
+        margin: 0px 0;
+    }
+
+    /* Navigation */
+    nav ul {
+        flex-wrap: wrap; /* Permet d'organiser les éléments en plusieurs lignes si besoin */
+        justify-content: center; /* Centrer les éléments */
+        width: 100%; /* Utilise toute la largeur */
+    }
+
+    nav ul li {
+        margin: 0 10px; /* Réduire l'espacement entre les éléments */
+    }
+
+    nav ul li a {
+        font-size: 18px; /* Réduire la taille des liens */
+    }
+
+    /* Icônes du header */
+    .header-icons {
+        display: none; /* Masquer les icônes */
+    }
+
+.avis-container { 
+    grid-template-columns: 1fr;
+    padding: 0 1rem; /* ← Ajoute un peu de padding intérieur */
+    box-sizing: border-box; /* ← Pour que padding ne déborde pas */
+    overflow-x: hidden; /* ← Bloque tout débordement horizontal */
+    width: 100%; /* ← S’assure que le container reste dans l’écran */
+}
+
+.avis iframe {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 200px;
+  }
+  
+  .avis {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .header-icons-footer {
+    gap: 1px; /* Espace entre les icônes */
+    max-width: 425px; /* Ajuste la largeur max du contenu */
+    font-size: 12px;
+}
+#calendar {
+    margin: 5px auto 0;  /* Ajoutez une marge en haut (50px ou plus selon vos besoins) */
+}
+/* Changer la police des noms des jours (Lundi, Mardi...) */
+.fc-day-header {
+    font-size: 15px;
+}
+
+/* Changer la police du nom du mois et du titre */
+.fc-center h2 {
+    font-size: 20px;
+}
+.event-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    font-family: "DMSans VariableFont opsz", wght;
+    font-size: 15px;
+}
 }
