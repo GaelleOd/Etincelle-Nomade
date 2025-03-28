@@ -46,6 +46,41 @@
     </div>
 </nav>
 
+<script>
+    // Sélectionner le menu principal
+const mainNav = document.querySelector('.main-nav');
+
+// Fonction pour vérifier la position du défilement
+function checkScrollPosition() {
+    // Si on est tout en haut de la page, rendre le menu visible
+    if (window.scrollY === 0) {
+        mainNav.style.opacity = '1';
+    } else {
+        // Si on n'est pas en haut de la page, il est caché sauf en cas de survol
+        if (!mainNav.matches(':hover')) {
+            mainNav.style.opacity = '0';
+        }
+    }
+}
+
+// Vérifie la position du défilement au chargement de la page
+checkScrollPosition();
+
+// Ajouter un écouteur d'événement pour suivre le défilement
+window.addEventListener('scroll', checkScrollPosition);
+
+// Ajouter un écouteur pour le survol de la souris pour gérer l'affichage du menu
+mainNav.addEventListener('mouseenter', () => {
+    mainNav.style.opacity = '1'; // Le menu devient visible au survol
+});
+mainNav.addEventListener('mouseleave', () => {
+    // Le menu disparait si on n'est pas en haut de la page et pas en survol
+    if (window.scrollY !== 0) {
+        mainNav.style.opacity = '0';
+    }
+});
+</script>
+
 <!-- Contenu principal -->
 <main>
     <!-- Art Créatif Enfants -->
