@@ -126,7 +126,7 @@ mainNav.addEventListener('mouseleave', () => {
             <p><strong>Nombre de places :</strong> Places limitées à 4 bébés accompagné d'un adulte</p>
             <p><strong>Créneaux horaires :</strong> CRENEAUX PROCHAINEMENT DISPONIBLE</p>
             <p><strong class="price">Tarif :</strong> 10 euros le cours à l'unité
-                35 euros le mois pour 1 cours par semaine</p>
+                <p>35 euros le mois pour 1 cours par semaine</p>
         </div>
     </section>
 
@@ -255,5 +255,25 @@ mainNav.addEventListener('mouseleave', () => {
         </div>
           <footer>
         </div>
+        <script>
+            // Fonction pour gérer le changement d'images du diaporama
+            function setupSlider(sliderId) {
+                let slider = document.getElementById(sliderId);
+                let images = slider.getElementsByTagName("img");
+                let currentIndex = 0;
+    
+                setInterval(function() {
+                    for (let i = 0; i < images.length; i++) {
+                        images[i].classList.add('hidden');
+                    }
+                    currentIndex = (currentIndex + 1) % images.length;
+                    images[currentIndex].classList.remove('hidden');
+                }, 3000);
+            }
+            // Initialisation des diaporamas
+        setupSlider("art-creatif-slider");
+        setupSlider("eveil-bebes-slider");
+        setupSlider("broderie-slider");
+    </script>
 </body>
 </html>
