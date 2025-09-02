@@ -41,7 +41,7 @@
                 </div>
         </div>
     </header>
-    <main>
+   <main>
     <!-- Section d’infos visible au chargement -->
     <section class="infosformulaire">
         <h1 class="title">Formulaire</h1>
@@ -52,15 +52,13 @@
 
         <!-- Bouton qui affiche le formulaire -->
         <button id="show-form" class="btn">Je m'inscris</button>
-
-        <a href="index.html" class="back-button">Retour à l'accueil</a>
     </section>
 
     <!-- Section formulaire cachée par défaut -->
     <section id="form-section" style="display:none;">
         <h2>Formulaire d'inscription</h2>
 
-    <form name="inscription" method="POST" data-netlify="true" action="merci-reservation.html">
+        <form name="inscription" method="POST" data-netlify="true" action="merci-reservation.html">
             <!-- Champs cachés Netlify -->
             <input type="hidden" name="form-name" value="inscription">
 
@@ -83,47 +81,45 @@
             <hr>
 
             <!-- Section choix Yoga -->
-            <p>Choix du cours</p>
-
             <!-- Hatha Yoga -->
-            <fieldset>
+            <fieldset class="cours-section">
                 <legend>Hatha Yoga</legend>
                 <label>
-                    <input type="checkbox" name="cours" value="Hatha Yoga">
+                    <input type="checkbox" class="cours-checkbox" name="cours" value="Hatha Yoga">
                     S'inscrire à Hatha Yoga
                 </label>
 
                 <p>Type d'abonnement :</p>
-                <label><input type="radio" name="hatha-abonnement" value="1 séance (46€)"> 1 séance par mois ̶(̶6̶0̶€̶) 46€ </label><br>
-                <label><input type="radio" name="hatha-abonnement" value="2 séances (56€)"> 2 séances ̶(̶1̶2̶0̶€̶) 56€</label><br>
-                <label><input type="radio" name="hatha-abonnement" value="3 séances (62€)"> 3 séances ̶(̶1̶8̶0̶€̶) 62€</label><br>
-                <label><input type="radio" name="hatha-abonnement" value="Carte 8 séances (100€)"> Carte 8 séances ̶(̶1̶2̶0̶€̶) 100€</label>
+                <label><input type="radio" name="hatha-abonnement" value="1 séance (46€)" disabled> 1 séance par mois ̶(̶6̶0̶€̶) 46€ </label><br>
+                <label><input type="radio" name="hatha-abonnement" value="2 séances (56€)" disabled> 2 séances ̶(̶1̶2̶0̶€̶) 56€</label><br>
+                <label><input type="radio" name="hatha-abonnement" value="3 séances (62€)" disabled> 3 séances ̶(̶1̶8̶0̶€̶) 62€</label><br>
+                <label><input type="radio" name="hatha-abonnement" value="Carte 8 séances (100€)" disabled> Carte 8 séances ̶(̶1̶2̶0̶€̶) 100€</label>
             </fieldset>
 
             <!-- Yoga Ludique Parent & Enfant -->
-            <fieldset>
+            <fieldset class="cours-section">
                 <legend>Yoga Ludique Parent & Enfant</legend>
                 <label>
-                    <input type="checkbox" name="cours" value="Yoga Ludique">
+                    <input type="checkbox" class="cours-checkbox" name="cours" value="Yoga Ludique">
                     S'inscrire à Yoga Ludique Parent & Enfant
                 </label>
 
                 <p>Type d'abonnement :</p>
-                <label><input type="radio" name="ludique-abonnement" value="Au mois (46€)"> Au mois ̶(̶6̶0̶€̶) 46€ </label><br>
-                <label><input type="radio" name="ludique-abonnement" value="Carte 8 séances (100€)"> Carte 8 séances ̶(̶1̶2̶0̶€̶) 100€</label>
+                <label><input type="radio" name="ludique-abonnement" value="Au mois (46€)" disabled> Au mois ̶(̶6̶0̶€̶) 46€ </label><br>
+                <label><input type="radio" name="ludique-abonnement" value="Carte 8 séances (100€)" disabled> Carte 8 séances ̶(̶1̶2̶0̶€̶) 100€</label>
             </fieldset>
 
             <!-- Yoga Prénatal -->
-            <fieldset>
+            <fieldset class="cours-section">
                 <legend>Yoga Prénatal</legend>
                 <label>
-                    <input type="checkbox" name="cours" value="Yoga Prénatal">
+                    <input type="checkbox" class="cours-checkbox" name="cours" value="Yoga Prénatal">
                     S'inscrire à Yoga Prénatal
                 </label>
 
                 <p>Type d'abonnement :</p>
-                <label><input type="radio" name="prenatal-abonnement" value="Au mois (46€)"> Au mois ̶(̶6̶0̶€̶) 46€ </label><br>
-                <label><input type="radio" name="prenatal-abonnement" value="Carte 8 séances (100€)"> Carte 8 séances ̶(̶1̶2̶0̶€̶) 100€</label>
+                <label><input type="radio" name="prenatal-abonnement" value="Au mois (46€)" disabled> Au mois ̶(̶6̶0̶€̶) 46€ </label><br>
+                <label><input type="radio" name="prenatal-abonnement" value="Carte 8 séances (100€)" disabled> Carte 8 séances ̶(̶1̶2̶0̶€̶) 100€</label>
             </fieldset>
 
             <hr>
@@ -131,16 +127,40 @@
             <!-- Bouton confirmer -->
             <button type="submit" class="btn">Confirmer</button>
         </form>
+
+        <!-- Retour à l'accueil sous le formulaire -->
+        <a href="index.html" class="back-button">Retour à l'accueil</a>
     </section>
 </main>
 
 <script>
-// Afficher/Masquer le formulaire
+// Bouton pour afficher le formulaire
 document.getElementById("show-form").addEventListener("click", function() {
-    document.getElementById("form-section").style.display = "block";
+    const formSection = document.getElementById("form-section");
+    formSection.style.display = "block";
     this.style.display = "none"; // cacher le bouton après clic
+    // Défilement fluide vers le formulaire
+    formSection.scrollIntoView({ behavior: "smooth" });
+});
+
+// Gestion activation/désactivation des radios
+document.querySelectorAll(".cours-checkbox").forEach(function(checkbox) {
+    checkbox.addEventListener("change", function() {
+        const section = this.closest(".cours-section"); 
+        const radios = section.querySelectorAll("input[type='radio']");
+
+        if (this.checked) {
+            radios.forEach(radio => radio.disabled = false);
+        } else {
+            radios.forEach(radio => {
+                radio.checked = false;
+                radio.disabled = true;
+            });
+        }
+    });
 });
 </script>
+
     <div class="fond-footer">
         <footer>
             <div class="header-icons-footer">
