@@ -43,9 +43,9 @@
     </header>
     <main>
         <section>
-            <h1 class="title">Merci pour votre réservation !</h1>
+            <h1 class="title">Merci pour votre réservation / inscription !</h1>
 <p>Je vous envoie un mail de confirmation dès que possible.</p>
-            <a href="planning.html">Retour au planning</a>
+            <a href="index.html">Retour à l'accueil</a>
       </section>
     </main>
     <div class="fond-footer">
@@ -161,7 +161,6 @@
             // Fonction pour charger le texte depuis un fichier externe
             function loadMarqueeText() {
                 fetch('textes/marquee-text.txt') // Chemin vers ton fichier texte
-                fetch('marquee-text.txt') // Chemin vers ton fichier texte
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Fichier non trouvé');
