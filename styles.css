@@ -279,6 +279,18 @@ main section {
         font-size: 20px;
             }
 
+.lien-formulaire {
+    color: #d66831;
+    text-decoration: none;
+    display: inline-block;        /* nécessaire pour le transform */
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .lien-formulaire:hover {
+    transform: scale(1.05);       /* léger zoom */
+    color: #b94e1f;               /* optionnel : nuance plus foncée au survol */
+  }
+  
 /* Cartes */
 .card-container {
     display: flex;
