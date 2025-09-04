@@ -6,6 +6,7 @@
     <title>Merci !</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
     <style type="text/css">
     </style>
 </head>
@@ -161,7 +162,6 @@
             // Fonction pour charger le texte depuis un fichier externe
             function loadMarqueeText() {
                 fetch('textes/marquee-text.txt') // Chemin vers ton fichier texte
-                fetch('marquee-text.txt') // Chemin vers ton fichier texte
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Fichier non trouvé');
