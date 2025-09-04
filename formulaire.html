@@ -277,7 +277,6 @@ document.querySelectorAll(".cours-checkbox").forEach(function(checkbox) {
             // Fonction pour charger le texte depuis un fichier externe
             function loadMarqueeText() {
                 fetch('textes/marquee-text.txt') // Chemin vers ton fichier texte
-                fetch('marquee-text.txt') // Chemin vers ton fichier texte
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Fichier non trouvé');
